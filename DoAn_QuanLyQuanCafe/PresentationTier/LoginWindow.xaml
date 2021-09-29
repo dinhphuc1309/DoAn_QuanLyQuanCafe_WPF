@@ -6,39 +6,44 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="1024" Width="1440">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                <GradientStop Color="#0A785F" Offset="1"/>
-                <GradientStop Color="#F5FFF6" Offset="0"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Border Height="820" VerticalAlignment="Top" CornerRadius="0 0 270 0" Background="#F5FFF6"></Border>
-        <StackPanel Orientation="Horizontal">
-            <StackPanel Width="620">
-                <Image Source="/Images/logo.png" Margin="0, 100, 0, 0"/>
-            </StackPanel>
-            <StackPanel Width="620">
-                <StackPanel Margin="90 90">
-                    <TextBlock  Text="User login" Margin="20,100,20,0" TextAlignment="Center" FontSize="80" />
-                    <StackPanel Orientation="Horizontal" Margin="20,90,20,0">
-                        <materialDesign:PackIcon Kind="Account" Width="60" Height="60"/>
-                        <TextBox x:Name="txtUsername" Margin="10" materialDesign:HintAssist.Hint="Enter Username" Foreground="Black" Width="300" FontSize="33"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="20,20,20,0">
-                        <materialDesign:PackIcon Kind="Password" Width="60" Height="60"/>
-                        <PasswordBox x:Name="txtPassword" Margin="10" materialDesign:HintAssist.Hint="**********" Foreground="Black" Width="300" FontSize="33"/>
-                    </StackPanel>
-                    <StackPanel Margin="20,50,20,0" HorizontalAlignment="Center">
-                        <Button Width="150" Height="60" Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="2" BorderBrush="#F5FFF6" Background="#0A785F" Foreground="White" ToolTip="Login" x:Name="btnLogin" Content="Login">
+        Title="LoginWindow" Height="390" Width="550"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True" >
 
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.ColumnSpan="3" Grid.RowSpan="3" Background="#F8F8F8" CornerRadius="30">
+            
+        </Border>
+
+        <Image Source="/Icon/closeicon.png" Margin="0,20,30,0" VerticalAlignment="top" HorizontalAlignment="Center"  Grid.Column="2"  Width="32" Height="32" />
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="106"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image Source="/Images/logo.png" Margin="0,26,0,0" />
+            <TextBlock Foreground="#BC8243" Margin="0,6,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Text="The Coffee App" FontSize="24" FontFamily="Google Sans Medium" />
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
+   
 </Window>
 
 
