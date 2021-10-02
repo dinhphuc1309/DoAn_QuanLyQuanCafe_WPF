@@ -27,6 +27,7 @@ namespace DoAn_QuanLyQuanCafe
             InitializeComponent();
             loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
+            
 
         }
     }
