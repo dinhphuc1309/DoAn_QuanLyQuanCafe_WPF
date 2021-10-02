@@ -9,7 +9,8 @@
         Title="LoginWindow" Height="390" Width="550"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Transparent"
-        AllowsTransparency="True" >
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,7 +24,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.ColumnSpan="3" Grid.RowSpan="3" Background="#F8F8F8" CornerRadius="30"></Border>
+        <Border Grid.ColumnSpan="3" 
+                Grid.RowSpan="3" 
+                Background="#F8F8F8" 
+                CornerRadius="30" 
+                materialDesign:ShadowAssist.ShadowDepth="Depth3">
+        </Border>
+
 
         <Button Margin="0,20,30,0" VerticalAlignment="top" HorizontalAlignment="Center"  Grid.Column="2"
                 Style="{StaticResource MaterialDesignIconButton}"
@@ -33,52 +40,62 @@
                 Click="Button_Click_1">
             <Image Source="/Icon/closeicon.png" Margin="5"/>
         </Button>
-        
+
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="106"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image Source="/Images/logo.png" Margin="0,26,0,0" />
+            <Image Source="/Images/logo.png" Margin="0,26,0,0" Width="80" Height="80"/>
             <TextBlock Foreground="#BC8243" Margin="0,6,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Text="The Coffee App" FontSize="24" FontFamily="Google Sans Medium" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
+            
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Center"
-                Height="48"
-                Width="372"
-                materialDesign:HintAssist.Hint="Tên đăng nhập"
-                FontFamily="Google Sans Medium"
-                BorderBrush="#999999"
-                BorderThickness="2"
-                Background="#FFFFFF"
-                />
-            <PasswordBox Grid.Row="1"
-                Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
-                VerticalAlignment="Center"
-                Height="48"
-                Width="372"
-                materialDesign:HintAssist.Hint="Mật khẩu"
-                FontFamily="Google Sans Medium"
-                BorderBrush="#999999"
-                BorderThickness="2"
-                Background="#FFFFFF"
-                />
+
+            <Grid Height="48"    
+                  Width="372">
+                <Border BorderBrush="#999999" 
+                        BorderThickness="2" 
+                        CornerRadius="30" 
+                        Background="#FFFFFF">
+                    <TextBox Margin="20,5,20,5"
+                             materialDesign:HintAssist.Hint="Tên đăng nhập"
+                             FontFamily="Google Sans Medium" 
+                             FontSize="18"
+                             materialDesign:TextFieldAssist.HasClearButton="True"/>
+                </Border>
+            </Grid>
+
+            <Grid Height="48"     
+                  Width="372" 
+                  Grid.Row="1">
+                <Border BorderBrush="#999999" 
+                        BorderThickness="2" 
+                        CornerRadius="30" 
+                        Background="#FFFFFF">
+                    <PasswordBox Margin="20,5,20,5"
+                                 materialDesign:HintAssist.Hint="Mật khẩu"
+                                 FontFamily="Google Sans Medium"
+                                 FontSize="18" 
+                                 materialDesign:TextFieldAssist.HasClearButton="True"/>
+                </Border>
+            </Grid>
+            
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <Button
+               
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Background="#0A785F"
                 Content="Đăng nhập"
                 FontFamily="Google Sans Medium"
                 Height="48"
                 Width="150"
-                materialDesign:ButtonAssist.CornerRadius="25" Click="Button_Click">
+                materialDesign:ButtonAssist.CornerRadius="30" Click="Button_Click">
             </Button>
         </Grid>
     </Grid>

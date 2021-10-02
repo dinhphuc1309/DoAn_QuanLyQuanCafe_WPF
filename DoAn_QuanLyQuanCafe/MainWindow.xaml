@@ -6,8 +6,122 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1024" Width="1440">
+        Title="MainWindow" Height="1024" Width="1440"
+        MouseDown="Window_MouseDown">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="98"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="124"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" >
+            <Image  Source="/Images/logo.png" VerticalAlignment="Top" Margin="0,23,0,0" Width="71" Height="71" />
+        </materialDesign:Card>
+        <TabControl Grid.Row="1"
+                    Style="{StaticResource MaterialDesignNavigatilRailTabControl}" 
+                    BorderThickness="0"
+                    BorderBrush="Transparent"
+                    TabStripPlacement="Left"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                    materialDesign:ColorZoneAssist.Mode="Standard"
+                    SnapsToDevicePixels="True"
+                    >
+
+            <TabItem  Width="98" Height="98">
+                <TabItem.Header >
+                    <StackPanel
+                        
         
+                        Height="auto"
+       
+                        Width="auto">
+                        <materialDesign:PackIcon
+          
+                            Kind="Home"
+          
+                            Width="36"
+          
+                            Height="36"
+          
+                            HorizontalAlignment="Center"/>
+                        <TextBlock Text="Menu" FontFamily="Google Sans Medium" FontSize="12" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+
+            <TabItem Width="98"  Height="98">
+                <TabItem.Header>
+                    <StackPanel
+        
+                        Height="auto"
+       
+                        Width="auto">
+                        <materialDesign:PackIcon
+                            Kind="AlignVerticalBottom"
+                             Width="36"
+          
+                            Height="36"
+                            HorizontalAlignment="Center" />
+
+                        <TextBlock Text="Thống kê" FontFamily="Google Sans Medium" FontSize="12" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+
+            <TabItem Width="98"  Height="98">
+                <TabItem.Header>
+                    <StackPanel
+        
+                        Height="auto"
+       
+                        Width="auto">
+                        <materialDesign:PackIcon
+                            Kind="Tune"
+                             Width="36"
+          
+                            Height="36"
+                            HorizontalAlignment="Center" />
+
+                        <TextBlock Text="Cài đặt" FontFamily="Google Sans Medium" FontSize="12" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+
+
+        </TabControl>
+        
+        <TextBlock Margin="48,0,0,0" Height="50" Grid.Column="1" Width="235" HorizontalAlignment="Left" Text="Menu" FontFamily="Google Sans Medium" FontSize="48"/>
+        
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="474"/>
+            </Grid.ColumnDefinitions>
+            <Grid Width="394" Height="48"  HorizontalAlignment="Right">
+                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="30">
+                    <TextBox Margin="20,5,20,5"
+                        materialDesign:HintAssist.Hint="Search" 
+                             FontFamily="Google Sans Medium" 
+                             FontSize="18" 
+                              materialDesign:TextFieldAssist.HasClearButton="True"/>
+                </Border>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="32,0,0,0">
+                <Grid Width="48" Height="48">
+                    <Border  CornerRadius="30">
+                        <Image Source="/Images/userimage.png"/>
+                    </Border>
+                </Grid>
+                <StackPanel VerticalAlignment="Center" Margin="11">
+                    <TextBlock Text="Jane Doe" FontFamily="Google Sans Medium" FontSize="18" />
+                    <TextBlock Text="Nhân viên" FontFamily="Google Sans Medium" FontSize="14" Foreground="#999999"/>
+                </StackPanel>
+            </StackPanel>
+            <Border Grid.ColumnSpan="2" BorderBrush="#EBEBEB" BorderThickness="3" Height="3" Width="1246" VerticalAlignment="Bottom" />
+        </Grid>
     </Grid>
 </Window>

@@ -1,5 +1,4 @@
-﻿using DoAn_QuanLyQuanCafe.PresentationTier;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,42 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DoAn_QuanLyQuanCafe
+namespace DoAn_QuanLyQuanCafe.PresentationTier
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ErrorWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ErrorWindow : Window
     {
-        LoginWindow loginWindow;
-        ErrorWindow errorWindow;
-        public MainWindow()
+        public ErrorWindow()
         {
             InitializeComponent();
-            loginWindow = new LoginWindow();
-            loginWindow.Show();
-            errorWindow = new ErrorWindow();
-            errorWindow.Show();
-
-
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
         }
-
-      
     }
 }
