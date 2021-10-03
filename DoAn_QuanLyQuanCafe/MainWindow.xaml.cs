@@ -47,6 +47,9 @@ namespace DoAn_QuanLyQuanCafe
             }
         }
 
-      
+        private void MenuClick(object sender, RoutedEventArgs e)
+        {
+            myFrame.NavigationService.Navigate(new MenuUserControl());
+        }
     }
 }

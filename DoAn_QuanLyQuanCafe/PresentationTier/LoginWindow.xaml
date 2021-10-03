@@ -50,40 +50,32 @@
             <TextBlock Foreground="#BC8243" Margin="0,6,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Text="The Coffee App" FontSize="24" FontFamily="Google Sans Medium" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
+            <TextBox
+                Margin="20,5,20,5"
+                materialDesign:HintAssist.Hint="Tên đăng nhập"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" 
+                FontFamily="Google Sans Medium" FontSize="18"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:HintAssist.Foreground="#0A785F"
+                materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
 
-            <Grid Height="48"    
-                  Width="372">
-                <Border BorderBrush="#999999" 
-                        BorderThickness="2" 
-                        CornerRadius="30" 
-                        Background="#FFFFFF">
-                    <TextBox Margin="20,5,20,5"
-                             materialDesign:HintAssist.Hint="Tên đăng nhập"
-                             FontFamily="Google Sans Medium" 
-                             FontSize="18"
-                             materialDesign:TextFieldAssist.HasClearButton="True"/>
-                </Border>
-            </Grid>
-
-            <Grid Height="48"     
-                  Width="372" 
-                  Grid.Row="1">
-                <Border BorderBrush="#999999" 
-                        BorderThickness="2" 
-                        CornerRadius="30" 
-                        Background="#FFFFFF">
-                    <PasswordBox Margin="20,5,20,5"
-                                 materialDesign:HintAssist.Hint="Mật khẩu"
-                                 FontFamily="Google Sans Medium"
-                                 FontSize="18" 
-                                 materialDesign:TextFieldAssist.HasClearButton="True"/>
-                </Border>
-            </Grid>
+            <PasswordBox 
+                Grid.Row="1"
+                Margin="20,5,20,5"
+                materialDesign:HintAssist.Hint="Mật khẩu"
+                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                VerticalAlignment="Center" 
+                FontFamily="Google Sans Medium" FontSize="18"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:HintAssist.Foreground="#0A785F"
+                materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
             
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
@@ -99,6 +91,7 @@
             </Button>
         </Grid>
     </Grid>
+    
 
 </Window>
 

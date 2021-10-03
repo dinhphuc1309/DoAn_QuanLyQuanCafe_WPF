@@ -7,6 +7,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="1024" Width="1440"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,28 +19,17 @@
             <RowDefinition Height="124"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" >
-            <Image  Source="/Images/logo.png" VerticalAlignment="Top" Margin="0,23,0,0" Width="71" Height="71" />
-        </materialDesign:Card>
-        <TabControl Grid.Row="1"
-                    Style="{StaticResource MaterialDesignNavigatilRailTabControl}" 
-                    BorderThickness="0"
-                    BorderBrush="Transparent"
-                    TabStripPlacement="Left"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                    materialDesign:ColorZoneAssist.Mode="Standard"
-                    SnapsToDevicePixels="True"
-                    >
-
-            <TabItem  Width="98" Height="98">
-                <TabItem.Header >
-                    <StackPanel
-                        
-        
-                        Height="auto"
-       
-                        Width="auto">
-                        <materialDesign:PackIcon
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="124"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Image  Source="/Images/logo.png" VerticalAlignment="Top" Margin="0,33,0,0" Width="71" Height="71" />
+                <StackPanel Grid.Row="1">
+                    <RadioButton Width="98" Height="98" Style="{StaticResource RadioButtonCustom}" Checked="MenuClick">
+                        <StackPanel>
+                            <materialDesign:PackIcon
           
                             Kind="Home"
           
@@ -47,51 +38,39 @@
                             Height="36"
           
                             HorizontalAlignment="Center"/>
-                        <TextBlock Text="Menu" FontFamily="Google Sans Medium" FontSize="12" />
-                    </StackPanel>
-                </TabItem.Header>
-            </TabItem>
-
-            <TabItem Width="98"  Height="98">
-                <TabItem.Header>
-                    <StackPanel
-        
-                        Height="auto"
-       
-                        Width="auto">
-                        <materialDesign:PackIcon
+                            <TextBlock Text="Menu" FontFamily="Google Sans Medium" FontSize="12" />
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Width="98" Height="98" Style="{StaticResource RadioButtonCustom}">
+                        <StackPanel>
+                            <materialDesign:PackIcon
                             Kind="AlignVerticalBottom"
                              Width="36"
           
                             Height="36"
                             HorizontalAlignment="Center" />
 
-                        <TextBlock Text="Thống kê" FontFamily="Google Sans Medium" FontSize="12" />
-                    </StackPanel>
-                </TabItem.Header>
-            </TabItem>
-
-            <TabItem Width="98"  Height="98">
-                <TabItem.Header>
-                    <StackPanel
-        
-                        Height="auto"
-       
-                        Width="auto">
-                        <materialDesign:PackIcon
+                            <TextBlock Text="Thống kê" FontFamily="Google Sans Medium" FontSize="12" />
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Width="98" Height="98" Style="{StaticResource RadioButtonCustom}">
+                        <StackPanel>
+                            <materialDesign:PackIcon
                             Kind="Tune"
                              Width="36"
           
                             Height="36"
                             HorizontalAlignment="Center" />
 
-                        <TextBlock Text="Cài đặt" FontFamily="Google Sans Medium" FontSize="12" />
-                    </StackPanel>
-                </TabItem.Header>
-            </TabItem>
+                            <TextBlock Text="Cài đặt" FontFamily="Google Sans Medium" FontSize="12" />
+                        </StackPanel>
+                    </RadioButton>
 
 
-        </TabControl>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        
         
         <TextBlock Margin="48,0,0,0" Height="50" Grid.Column="1" Width="235" HorizontalAlignment="Left" Text="Menu" FontFamily="Google Sans Medium" FontSize="48"/>
         
@@ -100,14 +79,22 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="474"/>
             </Grid.ColumnDefinitions>
-            <Grid Width="394" Height="48"  HorizontalAlignment="Right">
-                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="30">
-                    <TextBox Margin="20,5,20,5"
-                        materialDesign:HintAssist.Hint="Search" 
-                             FontFamily="Google Sans Medium" 
-                             FontSize="18" 
-                              materialDesign:TextFieldAssist.HasClearButton="True"/>
-                </Border>
+            <Grid VerticalAlignment="Center"  HorizontalAlignment="Right">
+               
+                <StackPanel>
+                    
+                    <TextBox
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Width="394"
+                        Height="51"
+                        AcceptsReturn="True"
+                        FontFamily="Google Sans Medium"
+                        FontSize="14"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        materialDesign:HintAssist.Hint="Search"
+                        materialDesign:HintAssist.Foreground="#0A785F"
+                        materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
+                </StackPanel>
             </Grid>
 
             <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="32,0,0,0">
@@ -123,5 +110,11 @@
             </StackPanel>
             <Border Grid.ColumnSpan="2" BorderBrush="#EBEBEB" BorderThickness="3" Height="3" Width="1246" VerticalAlignment="Bottom" />
         </Grid>
+        <!--<materialDesign:Card Width="800" Height="804" Grid.Row="1" Grid.Column="1" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <StackPanel>
+                <Border Margin="0,129,0,0" Grid.ColumnSpan="2" BorderBrush="#7B7B7B" BorderThickness="3" Height="4" Width="654" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </materialDesign:Card>-->
+        <Frame Grid.Row="1" Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
