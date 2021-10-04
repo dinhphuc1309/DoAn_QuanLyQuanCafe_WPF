@@ -23,6 +23,7 @@ namespace DoAn_QuanLyQuanCafe
     {
         LoginWindow loginWindow;
         ErrorWindow errorWindow;
+        VaoCaWindow vaoCaWindow;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +31,8 @@ namespace DoAn_QuanLyQuanCafe
             loginWindow.Show();
             errorWindow = new ErrorWindow();
             errorWindow.Show();
+            vaoCaWindow = new VaoCaWindow();
+            vaoCaWindow.Show();
 
 
         }
@@ -50,6 +53,16 @@ namespace DoAn_QuanLyQuanCafe
         private void MenuClick(object sender, RoutedEventArgs e)
         {
             myFrame.NavigationService.Navigate(new MenuUserControl());
+        }
+
+        private void ThongKeClick(object sender, RoutedEventArgs e)
+        {
+            myFrame.NavigationService.Navigate(new ThongKeUserControl());
+        }
+
+        private void CaiDatClick(object sender, RoutedEventArgs e)
+        {
+            myFrame.NavigationService.Navigate(new CaiDatUserControl());
         }
     }
 }

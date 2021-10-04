@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ErrorWindow" Height="390" Width="550"
+        Title="ErrorWindow" Height="330" Width="490"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
@@ -18,8 +18,8 @@
                 materialDesign:ShadowAssist.ShadowDepth="Depth3">
         </Border>
         <StackPanel>
-            <Image Source="/Icon/erroricon.png" Width="96" Height="96" Margin="0,80,0,44"/>
-            <TextBlock Text="Something gone wrong" FontSize="36" HorizontalAlignment="Center" FontFamily="Google Sans Medium" Margin="0,0,0,47" />
+            <Image Source="/Icon/erroricon.png" Width="86" Height="86" Margin="0,48,0,40"/>
+            <TextBlock Text="Something gone wrong" FontSize="24" HorizontalAlignment="Center" FontFamily="Google Sans Medium" Margin="0,0,0,46" />
             <Button 
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Background="#0A785F"

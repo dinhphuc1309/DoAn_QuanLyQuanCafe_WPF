@@ -1,4 +1,4 @@
-﻿<Window x:Class="DoAn_QuanLyQuanCafe.PresentationTier.LoginWindow"
+﻿<Window x:Class="DoAn_QuanLyQuanCafe.PresentationTier.VaoCaWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,17 +6,16 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="371" Width="534"
+        Title="VaoCaWindow" Height="371" Width="534"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
         MouseDown="Window_MouseDown">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="124"/>
             <RowDefinition Height="246"/>
-            
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="76"/>
@@ -51,8 +50,8 @@
 
                 <TextBox
                     Width="372" Height="48"
-                    Margin="20,3,20,0"
-                    materialDesign:HintAssist.Hint="Tên đăng nhập"
+                    Margin="20,36.5,20,61"
+                    materialDesign:HintAssist.Hint="Nhập số tiền"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" 
                     FontFamily="Google Sans Medium" FontSize="18"
@@ -60,26 +59,15 @@
                     materialDesign:HintAssist.Foreground="#0A785F"
                     materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
 
-                <PasswordBox 
-                    Width="372" Height="48"
-                    Grid.Row="1"
-                    Margin="20,24,20,25"
-                    materialDesign:HintAssist.Hint="Mật khẩu"
-                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                    VerticalAlignment="Center" 
-                    FontFamily="Google Sans Medium" FontSize="18"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    materialDesign:HintAssist.Foreground="#0A785F"
-                    materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
-                
+
                 <Button
                     IsDefault="True"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Background="#0A785F"
-                    Content="Đăng nhập"
+                    Content="OK"
                     FontFamily="Google Sans Medium"
                     Height="48"
-                    Width="150"
+                    Width="110"
                     materialDesign:ButtonAssist.CornerRadius="30" Click="Button_Click">
                 </Button>
             </StackPanel>
@@ -87,10 +75,5 @@
 
 
         </Grid>
-      
     </Grid>
-
-
 </Window>
-
-
