@@ -22,47 +22,14 @@ namespace DoAn_QuanLyQuanCafe
     public partial class MainWindow : Window
     {
         LoginWindow loginWindow;
-        ErrorWindow errorWindow;
-        VaoCaWindow vaoCaWindow;
+        
+
         public MainWindow()
         {
             InitializeComponent();
+            this.Hide();
             loginWindow = new LoginWindow();
-            loginWindow.Show();
-            errorWindow = new ErrorWindow();
-            errorWindow.Show();
-            vaoCaWindow = new VaoCaWindow();
-            vaoCaWindow.Show();
-
-
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if(e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
-
-        private void MenuClick(object sender, RoutedEventArgs e)
-        {
-            myFrame.NavigationService.Navigate(new MenuUserControl());
-        }
-
-        private void ThongKeClick(object sender, RoutedEventArgs e)
-        {
-            myFrame.NavigationService.Navigate(new ThongKeUserControl());
-        }
-
-        private void CaiDatClick(object sender, RoutedEventArgs e)
-        {
-            myFrame.NavigationService.Navigate(new CaiDatUserControl());
+            loginWindow.ShowDialog();
         }
     }
 }

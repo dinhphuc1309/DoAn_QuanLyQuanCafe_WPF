@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace DoAn_QuanLyQuanCafe.PresentationTier
 {
     /// <summary>
-    /// Interaction logic for VaoCaWindow.xaml
+    /// Interaction logic for ErrorSaiTKMK.xaml
     /// </summary>
-    public partial class VaoCaWindow : Window
+    public partial class ErrorSaiTKMK : Window
     {
-        public VaoCaWindow()
+        public ErrorSaiTKMK()
         {
             InitializeComponent();
         }
@@ -33,11 +33,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

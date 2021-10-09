@@ -32,12 +32,13 @@
         </Border>
 
 
-        <Button IsCancel="True" Margin="12,20,32,0" VerticalAlignment="top" HorizontalAlignment="Center"  Grid.Column="2"
+        <Button x:Name="btnExit"
+            IsCancel="True" Margin="12,20,32,0" VerticalAlignment="top" HorizontalAlignment="Center"  Grid.Column="2"
                 Style="{StaticResource MaterialDesignIconButton}"
                 Width="32"
                 Height="32"
                 Background="#C7C7C7"
-                Click="Button_Click_1">
+                Click="btnExit_Click">
             <Image Source="/Icon/closeicon.png" Margin="5"/>
         </Button>
 
@@ -50,29 +51,32 @@
             <StackPanel>
 
                 <TextBox
-                    Width="372" Height="48"
+                    x:Name="txtTenDangNhap"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Height="48"
                     Margin="20,3,20,0"
                     materialDesign:HintAssist.Hint="Tên đăng nhập"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" 
                     FontFamily="Google Sans Medium" FontSize="18"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
                     materialDesign:HintAssist.Foreground="#0A785F"
                     materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
 
                 <PasswordBox 
-                    Width="372" Height="48"
+                    x:Name="txtMatKhau"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    Height="48"
                     Grid.Row="1"
                     Margin="20,24,20,25"
                     materialDesign:HintAssist.Hint="Mật khẩu"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                     VerticalAlignment="Center" 
                     FontFamily="Google Sans Medium" FontSize="18"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
                     materialDesign:HintAssist.Foreground="#0A785F"
                     materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
                 
                 <Button
+                    x:Name="btnDangNhap"
                     IsDefault="True"
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Background="#0A785F"
@@ -80,7 +84,7 @@
                     FontFamily="Google Sans Medium"
                     Height="48"
                     Width="150"
-                    materialDesign:ButtonAssist.CornerRadius="30" Click="Button_Click">
+                    materialDesign:ButtonAssist.CornerRadius="30" Click="btnDangNhap_Click">
                 </Button>
             </StackPanel>
 

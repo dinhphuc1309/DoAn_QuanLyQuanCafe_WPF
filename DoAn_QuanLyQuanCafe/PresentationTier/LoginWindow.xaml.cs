@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAn_QuanLyQuanCafe.BusinessTier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,21 +20,16 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private readonly TaiKhoanBT taikhoanBT;
+        MainScreenWindow mainScreenWindow;
+        ErrorNullTK errorNullTK;
+        ErrorSaiTKMK errorSaiTKMK;
         public LoginWindow()
         {
+            taikhoanBT = new TaiKhoanBT();
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-            Application.Current.Shutdown();
-        }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -41,6 +37,39 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             {
                 DragMove();
             }
+        }
+
+
+        private void btnDangNhap_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = txtTenDangNhap.Text.Trim();
+            string passWord = txtMatKhau.Password.Trim();
+            //CheckLogin(userName, passWord);   
+            if (userName == "" || passWord == "")
+            {
+                errorNullTK = new ErrorNullTK();
+                errorNullTK.ShowDialog();
+                return;
+            }
+
+            if (taikhoanBT.KiemTraDangNhap(userName, passWord))
+            {
+                mainScreenWindow = new MainScreenWindow();
+                this.Hide();
+                mainScreenWindow.Show();
+                this.Close();
+
+            }
+            else
+            {
+                errorSaiTKMK = new ErrorSaiTKMK();
+                errorSaiTKMK.ShowDialog();
+            }
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

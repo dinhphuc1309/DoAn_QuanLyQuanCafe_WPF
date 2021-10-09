@@ -1,0 +1,34 @@
+﻿<Window x:Class="DoAn_QuanLyQuanCafe.PresentationTier.ErrorNullTK"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ErrorNullTK" Height="330" Width="490"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+    <Grid>
+        <Border 
+                Background="#F8F8F8" 
+                CornerRadius="30" 
+                materialDesign:ShadowAssist.ShadowDepth="Depth3">
+        </Border>
+        <StackPanel>
+            <Image Source="/Icon/erroricon.png" Width="86" Height="86" Margin="0,48,0,40"/>
+            <TextBlock Text="Tên đăng nhập hoặc mật khẩu trống" FontSize="24" HorizontalAlignment="Center" FontFamily="Google Sans Medium" Margin="0,0,0,46" />
+            <Button 
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Background="#0A785F"
+                Content="OK"
+                FontFamily="Google Sans Medium"
+                Height="48"
+                Width="140"
+                materialDesign:ButtonAssist.CornerRadius="30" Click="Button_Click" >
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -10,24 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DoAn_QuanLyQuanCafe.PresentationTier
 {
     /// <summary>
-    /// Interaction logic for MenuUserControl.xaml
+    /// Interaction logic for ErrorNullTK.xaml
     /// </summary>
-    public partial class MenuUserControl : UserControl
+    public partial class ErrorNullTK : Window
     {
-        public MenuUserControl()
+        public ErrorNullTK()
         {
             InitializeComponent();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

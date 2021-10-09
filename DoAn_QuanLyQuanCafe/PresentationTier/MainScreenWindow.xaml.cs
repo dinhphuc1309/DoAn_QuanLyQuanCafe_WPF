@@ -15,18 +15,31 @@ using System.Windows.Shapes;
 namespace DoAn_QuanLyQuanCafe.PresentationTier
 {
     /// <summary>
-    /// Interaction logic for ErrorWindow.xaml
+    /// Interaction logic for MainScreenWindow.xaml
     /// </summary>
-    public partial class ErrorWindow : Window
+    public partial class MainScreenWindow : Window
     {
-        public ErrorWindow()
+        public MainScreenWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MenuClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            myFrame.NavigationService.Navigate(new MenuUserControl());
+            txtName.Text = "Menu";
+        }
+
+        private void ThongKeClick(object sender, RoutedEventArgs e)
+        {
+            myFrame.NavigationService.Navigate(new ThongKeUserControl());
+            txtName.Text = "Thống kê";
+        }
+
+        private void CaiDatClick(object sender, RoutedEventArgs e)
+        {
+            myFrame.NavigationService.Navigate(new CaiDatUserControl());
+            txtName.Text = "Cài đặt";
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

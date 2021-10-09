@@ -3,8 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier">
+             xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid>
-        <TextBlock Text="Menu Screen" Background="BlueViolet" FontSize="50" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="474"/>
+
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:Card Width="394" Height="554" Grid.Column="1" UniformCornerRadius="30" materialDesign:ShadowAssist.ShadowDepth="Depth2">
+            
+        </materialDesign:Card>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="92"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Style="{StaticResource RadioButtonCustom}" Margin="103,0,44,0">
+                    <TextBlock Text="Espresso" FontFamily="Google Sans Medium" FontSize="18" />
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonCustom}">
+                    <TextBlock Text="Phin" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonCustom}">
+                    <TextBlock Text="Trà" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonCustom}">
+                    <TextBlock Text="Khác" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
+                </RadioButton>
+            </StackPanel>
+            <ListView Grid.Row="1"
+                      ItemsSource="{Binding Items1}" SelectionChanged="ListView_SelectionChanged" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+        
+                            DisplayMemberBinding="{Binding Code}"
+        
+                            Header="Code" />
+                        <GridViewColumn
+        
+                            DisplayMemberBinding="{Binding Name}"
+        
+                            Header="Name" />
+                        <GridViewColumn
+        
+                            DisplayMemberBinding="{Binding Description}"
+        
+                            Header="Price" />
+                        
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </UserControl>
