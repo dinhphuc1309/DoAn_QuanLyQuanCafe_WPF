@@ -36,10 +36,10 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             txtName.Text = "Thống kê";
         }
 
-        private void CaiDatClick(object sender, RoutedEventArgs e)
+        private void QuanLiClick(object sender, RoutedEventArgs e)
         {
-            myFrame.NavigationService.Navigate(new CaiDatUserControl());
-            txtName.Text = "Cài đặt";
+            myFrame.NavigationService.Navigate(new QuanLiUserControl());
+            txtName.Text = "Quản lí";
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -48,6 +48,17 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             {
                 DragMove();
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            ThongBaoDangXuatWindow thongBaoDangXuatWindow = new ThongBaoDangXuatWindow();
+            thongBaoDangXuatWindow.ShowDialog();
         }
     }
 }

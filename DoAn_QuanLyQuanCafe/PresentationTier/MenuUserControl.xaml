@@ -8,12 +8,15 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="474"/>
+            <ColumnDefinition Width="411"/>
 
         </Grid.ColumnDefinitions>
 
-        <materialDesign:Card Width="394" Height="554" Grid.Column="1" UniformCornerRadius="30" materialDesign:ShadowAssist.ShadowDepth="Depth2">
-            
+        <materialDesign:Card HorizontalAlignment="Right" Margin="0,0,24,0" Width="358" Height="554" Grid.Column="1" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth2">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect Color="#6D8DAD" Opacity="0.15"/>
+            </materialDesign:Card.Effect>
+
         </materialDesign:Card>
         <Grid>
             <Grid.RowDefinitions>
@@ -21,7 +24,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
-                <RadioButton Style="{StaticResource RadioButtonCustom}" Margin="103,0,44,0">
+                <RadioButton Style="{StaticResource RadioButtonCustom}" Margin="87,0,44,0">
                     <TextBlock Text="Espresso" FontFamily="Google Sans Medium" FontSize="18" />
                 </RadioButton>
                 <RadioButton Style="{StaticResource RadioButtonCustom}">
@@ -34,29 +37,6 @@
                     <TextBlock Text="Khác" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
                 </RadioButton>
             </StackPanel>
-            <ListView Grid.Row="1"
-                      ItemsSource="{Binding Items1}" SelectionChanged="ListView_SelectionChanged" Margin="10">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn
-        
-                            DisplayMemberBinding="{Binding Code}"
-        
-                            Header="Code" />
-                        <GridViewColumn
-        
-                            DisplayMemberBinding="{Binding Name}"
-        
-                            Header="Name" />
-                        <GridViewColumn
-        
-                            DisplayMemberBinding="{Binding Description}"
-        
-                            Header="Price" />
-                        
-                    </GridView>
-                </ListView.View>
-            </ListView>
         </Grid>
     </Grid>
 </UserControl>

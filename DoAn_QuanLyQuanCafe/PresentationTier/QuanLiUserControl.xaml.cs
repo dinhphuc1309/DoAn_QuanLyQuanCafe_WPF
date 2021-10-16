@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DoAn_QuanLyQuanCafe.PresentationTier
 {
     /// <summary>
-    /// Interaction logic for CaiDatUserControl.xaml
+    /// Interaction logic for QuanLiUserControl.xaml
     /// </summary>
-    public partial class CaiDatUserControl : UserControl
+    public partial class QuanLiUserControl : UserControl
     {
-        public CaiDatUserControl()
+        public QuanLiUserControl()
         {
             InitializeComponent();
         }

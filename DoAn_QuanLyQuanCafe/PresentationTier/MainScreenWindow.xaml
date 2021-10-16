@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainScreenWindow"  Height="721" Width="1280"
+        Title="MainScreenWindow"  Height="720" Width="1080"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        MouseDown="Window_MouseDown" >
+        MouseDown="Window_MouseDown"
+        Closed="Window_Closed">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,7 +21,10 @@
             <RowDefinition Height="99"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Grid.RowSpan="2">
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Grid.RowSpan="2">
+            <materialDesign:Card.Effect>
+                <DropShadowEffect Color="#FF6D8DAD" Opacity="0.15"/>
+            </materialDesign:Card.Effect>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="99"/>
@@ -54,7 +58,7 @@
                             <TextBlock Text="Thống kê" FontFamily="Google Sans Medium" FontSize="12" />
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Width="64" Height="64" Style="{StaticResource RadioButtonCustom}" Checked="CaiDatClick">
+                    <RadioButton Width="64" Height="64" Style="{StaticResource RadioButtonCustom}" Checked="QuanLiClick">
                         <StackPanel>
                             <materialDesign:PackIcon
                             Kind="Tune"
@@ -63,7 +67,7 @@
                             Height="32"
                             HorizontalAlignment="Center" />
 
-                            <TextBlock Text="Cài đặt" FontFamily="Google Sans Medium" FontSize="12" />
+                            <TextBlock Text="Quản lí" FontFamily="Google Sans Medium" FontSize="12" />
                         </StackPanel>
                     </RadioButton>
 
@@ -78,27 +82,22 @@
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="474"/>
+                <ColumnDefinition Width="411"/>
             </Grid.ColumnDefinitions>
-            <Grid VerticalAlignment="Center"  HorizontalAlignment="Right">
+            
+            <TextBox  
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center" 
+                Width="308"  
+                Height="39"
+                materialDesign:HintAssist.Hint="Search"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontFamily="Google Sans Medium" FontSize="14"
+                materialDesign:HintAssist.Foreground="#0A785F"
+                materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"
+                materialDesign:TextFieldAssist.HasClearButton="True"/>
 
-                <StackPanel>
-
-                    <TextBox
-                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                        Width="394"
-                        Height="51"
-                        AcceptsReturn="True"
-                        FontFamily="Google Sans Medium"
-                        FontSize="14"
-                        materialDesign:TextFieldAssist.HasClearButton="True"
-                        materialDesign:HintAssist.Hint="Search"
-                        materialDesign:HintAssist.Foreground="#0A785F"
-                        materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
-                </StackPanel>
-            </Grid>
-
-            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="48,0,0,0">
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="123,0,0,0" Width="288" HorizontalAlignment="Right">
                 <Grid Width="48" Height="48">
                     <Border  CornerRadius="30">
                         <Image Source="/Images/userimage.png"/>
@@ -108,14 +107,19 @@
                     <TextBlock Text="Jane Doe" FontFamily="Google Sans Medium" FontSize="18" />
                     <TextBlock Text="Nhân viên" FontFamily="Google Sans Medium" FontSize="14" Foreground="#999999"/>
                 </StackPanel>
+                <Button
+                    x:Name="btnLogOut"
+                    Click="btnLogOut_Click"
+                    Style="{StaticResource MaterialDesignIconForegroundButton}"
+                    ToolTip="MaterialDesignIconForegroundButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <materialDesign:PackIcon Kind="LogoutVariant" Foreground="#FC6D40"/>
+                </Button>
             </StackPanel>
             <Border Grid.ColumnSpan="2" BorderBrush="#EBEBEB" BorderThickness="3" Height="3" Width="1216" VerticalAlignment="Bottom"/>
         </Grid>
-        <!--<materialDesign:Card Width="800" Height="804" Grid.Row="1" Grid.Column="1" materialDesign:ShadowAssist.ShadowDepth="Depth3">
-            <StackPanel>
-                <Border Margin="0,129,0,0" Grid.ColumnSpan="2" BorderBrush="#7B7B7B" BorderThickness="3" Height="4" Width="654" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-            </StackPanel>
-        </materialDesign:Card>-->
+        <Image Grid.Column="1" Grid.Row="1" Width="412" Height="412" Source="/Images/background.png"/>
         <Frame Grid.Row="1" Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
+        
     </Grid>
 </Window>

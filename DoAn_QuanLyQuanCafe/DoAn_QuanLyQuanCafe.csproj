@@ -102,10 +102,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PresentationTier\CaiDatUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PresentationTier\ErrorNullTK.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,15 +122,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PresentationTier\QuanLiUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PresentationTier\ThongBaoDangXuatWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PresentationTier\ThongKeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PresentationTier\CaiDatUserControl.xaml.cs">
-      <DependentUpon>CaiDatUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PresentationTier\ErrorNullTK.xaml.cs">
       <DependentUpon>ErrorNullTK.xaml</DependentUpon>
     </Compile>
@@ -149,6 +150,12 @@
     </Compile>
     <Compile Include="PresentationTier\MenuUserControl.xaml.cs">
       <DependentUpon>MenuUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationTier\QuanLiUserControl.xaml.cs">
+      <DependentUpon>QuanLiUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationTier\ThongBaoDangXuatWindow.xaml.cs">
+      <DependentUpon>ThongBaoDangXuatWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PresentationTier\ThongKeUserControl.xaml.cs">
       <DependentUpon>ThongKeUserControl.xaml</DependentUpon>
@@ -179,7 +186,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\background.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logo.png" />
   </ItemGroup>

@@ -30,6 +30,8 @@ namespace DoAn_QuanLyQuanCafe
             this.Hide();
             loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
+
+            
         }
     }
 }

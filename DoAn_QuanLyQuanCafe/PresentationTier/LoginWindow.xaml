@@ -6,37 +6,37 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="371" Width="534"
+        Title="LoginWindow" Height="335" Width="490"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        MouseDown="Window_MouseDown">
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="124"/>
-            <RowDefinition Height="246"/>
+            <RowDefinition Height="123"/>
+            <RowDefinition Height="209"/>
             
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="76"/>
-            <ColumnDefinition Width="382"/>
-            <ColumnDefinition Width="76"/>
+            <ColumnDefinition Width="39"/>
+            <ColumnDefinition Width="409"/>
+            <ColumnDefinition Width="39"/>
         </Grid.ColumnDefinitions>
 
         <Border Grid.ColumnSpan="3" 
                 Grid.RowSpan="2" 
                 Background="#F8F8F8" 
-                CornerRadius="30" 
-                materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                CornerRadius="25">
         </Border>
 
 
         <Button x:Name="btnExit"
-            IsCancel="True" Margin="12,20,32,0" VerticalAlignment="top" HorizontalAlignment="Center"  Grid.Column="2"
+            IsCancel="True" Margin="0,22,22,0" VerticalAlignment="top" HorizontalAlignment="Right"  Grid.Column="1" Grid.ColumnSpan="2" 
                 Style="{StaticResource MaterialDesignIconButton}"
-                Width="32"
-                Height="32"
+                Width="24"
+                Height="24"
                 Background="#C7C7C7"
                 Click="btnExit_Click">
             <Image Source="/Icon/closeicon.png" Margin="5"/>
@@ -53,25 +53,25 @@
                 <TextBox
                     x:Name="txtTenDangNhap"
                     materialDesign:TextFieldAssist.HasClearButton="True"
-                    Height="48"
+                    Height="39"
                     Margin="20,3,20,0"
                     materialDesign:HintAssist.Hint="Tên đăng nhập"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                     VerticalAlignment="Center" 
-                    FontFamily="Google Sans Medium" FontSize="18"
+                    FontFamily="Google Sans Medium" FontSize="14"
                     materialDesign:HintAssist.Foreground="#0A785F"
                     materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
 
                 <PasswordBox 
                     x:Name="txtMatKhau"
                     materialDesign:TextFieldAssist.HasClearButton="True"
-                    Height="48"
+                    Height="39"
                     Grid.Row="1"
-                    Margin="20,24,20,25"
+                    Margin="20,5,20,24"
                     materialDesign:HintAssist.Hint="Mật khẩu"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                     VerticalAlignment="Center" 
-                    FontFamily="Google Sans Medium" FontSize="18"
+                    FontFamily="Google Sans Medium" FontSize="14"
                     materialDesign:HintAssist.Foreground="#0A785F"
                     materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"/>
                 
@@ -82,9 +82,9 @@
                     Background="#0A785F"
                     Content="Đăng nhập"
                     FontFamily="Google Sans Medium"
-                    Height="48"
-                    Width="150"
-                    materialDesign:ButtonAssist.CornerRadius="30" Click="btnDangNhap_Click">
+                    Height="32"
+                    Width="124"
+                    materialDesign:ButtonAssist.CornerRadius="15" Click="btnDangNhap_Click">
                 </Button>
             </StackPanel>
 

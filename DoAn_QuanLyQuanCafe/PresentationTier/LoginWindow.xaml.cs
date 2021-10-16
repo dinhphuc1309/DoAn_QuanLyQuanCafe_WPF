@@ -71,5 +71,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         {
             Application.Current.Shutdown();
         }
+
     }
 }
