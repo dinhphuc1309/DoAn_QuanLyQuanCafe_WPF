@@ -8,19 +8,19 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="411"/>
+            <ColumnDefinition Width="400"/>
 
         </Grid.ColumnDefinitions>
 
-        <materialDesign:Card HorizontalAlignment="Right" Margin="0,0,24,0" Width="358" Height="554" Grid.Column="1" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth2">
+        <materialDesign:Card HorizontalAlignment="Right" Margin="0,0,24,0" Width="358" Height="554" Grid.Column="1" UniformCornerRadius="10" >
             <materialDesign:Card.Effect>
                 <DropShadowEffect Color="#6D8DAD" Opacity="0.15"/>
             </materialDesign:Card.Effect>
-
         </materialDesign:Card>
+        
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="92"/>
+                <RowDefinition Height="65"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
@@ -37,6 +37,76 @@
                     <TextBlock Text="Khác" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
                 </RadioButton>
             </StackPanel>
+
+            <ScrollViewer Grid.Row="1" Margin="28 0 0 0"  VerticalScrollBarVisibility="Hidden">
+                <StackPanel >
+                    <ItemsControl x:Name="ListViewProducts" ItemsSource="{Binding Product}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="#FFFFFF"  Width="560" Height="135" CornerRadius="15" Margin="0 0 0 15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="127"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel HorizontalAlignment="Center" Margin="0 8 0 19">
+                                            <TextBlock Text="{Binding Name}" FontSize="18" FontFamily="Google Sans Medium"/>
+                                            <Border Width="78" Height="78" CornerRadius="10" Margin="0 7 0 0">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="{Binding Image}"/>
+                                                </Border.Background>
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="0 8 0 0">
+                                            <TextBlock Text="Độ ngọt" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D"/>
+                                            <Grid Height="60" Margin="15 15 0 0">
+                                                <RadioButton Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                    <TextBlock Text="0%" FontFamily="Google Sans Medium" FontSize="18" />
+                                                </RadioButton>
+                                                <RadioButton Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                    <TextBlock Text="25%" FontFamily="Google Sans Medium" FontSize="18" />
+                                                </RadioButton>
+                                                <RadioButton IsChecked="True" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                                    <TextBlock Text="50%" FontFamily="Google Sans Medium" FontSize="18" />
+                                                </RadioButton>
+                                                <RadioButton Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                                    <TextBlock Text="75%" FontFamily="Google Sans Medium" FontSize="18" />
+                                                </RadioButton>
+                                                <RadioButton Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Center"  VerticalAlignment="Bottom">
+                                                    <TextBlock Text="100%" FontFamily="Google Sans Medium" FontSize="18" />
+                                                </RadioButton>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Margin="0 8 22 0" HorizontalAlignment="Right" >
+                                            <TextBlock Text="Giá" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D" HorizontalAlignment="Right"/>
+                                            <TextBlock Text="{Binding Value, StringFormat={}{0:0.000vnđ}}" FontSize="18" FontFamily="Google Sans Medium" HorizontalAlignment="Right"/>
+                                            <Button Margin="0 31 0 0"
+                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                Background="#0A785F"
+                                Content="Thêm vào hóa đơn"
+                                FontFamily="Google Sans Medium"
+                                Height="34"
+                                Width="180"
+                                materialDesign:ButtonAssist.CornerRadius="15" >
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                    </ItemsControl>
+                </StackPanel>
+                
+
+            </ScrollViewer>
         </Grid>
     </Grid>
 </UserControl>

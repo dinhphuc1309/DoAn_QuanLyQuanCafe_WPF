@@ -10,7 +10,8 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
-        Closed="Window_Closed">
+        Closed="Window_Closed"
+        Background="#E5E5E5">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,9 +23,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Grid.RowSpan="2">
-            <materialDesign:Card.Effect>
-                <DropShadowEffect Color="#FF6D8DAD" Opacity="0.15"/>
-            </materialDesign:Card.Effect>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="99"/>
@@ -84,7 +82,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="411"/>
             </Grid.ColumnDefinitions>
-            
+
             <TextBox  
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center" 
@@ -98,11 +96,11 @@
                 materialDesign:TextFieldAssist.HasClearButton="True"/>
 
             <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="123,0,0,0" Width="288" HorizontalAlignment="Right">
-                <Grid Width="48" Height="48">
-                    <Border  CornerRadius="30">
-                        <Image Source="/Images/userimage.png"/>
-                    </Border>
-                </Grid>
+                <Border Width="48" Height="48" CornerRadius="24">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Images/userimage.png"/>
+                    </Border.Background>
+                </Border>
                 <StackPanel VerticalAlignment="Center" Margin="11">
                     <TextBlock Text="Jane Doe" FontFamily="Google Sans Medium" FontSize="18" />
                     <TextBlock Text="Nhân viên" FontFamily="Google Sans Medium" FontSize="14" Foreground="#999999"/>
@@ -116,10 +114,10 @@
                     <materialDesign:PackIcon Kind="LogoutVariant" Foreground="#FC6D40"/>
                 </Button>
             </StackPanel>
-            <Border Grid.ColumnSpan="2" BorderBrush="#EBEBEB" BorderThickness="3" Height="3" Width="1216" VerticalAlignment="Bottom"/>
+            <Border Grid.ColumnSpan="2" BorderBrush="#999999" BorderThickness="1"  VerticalAlignment="Bottom" />
         </Grid>
         <Image Grid.Column="1" Grid.Row="1" Width="412" Height="412" Source="/Images/background.png"/>
         <Frame Grid.Row="1" Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
-        
+
     </Grid>
 </Window>

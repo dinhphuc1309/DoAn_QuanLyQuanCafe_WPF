@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAn_QuanLyQuanCafe.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,34 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         public MenuUserControl()
         {
             InitializeComponent();
+            var products = GetProducts();
+            if (products.Count > 0)
+                ListViewProducts.ItemsSource = products;
+        }
+
+        private List<ThucUongDTO> GetProducts()
+        {
+            return new List<ThucUongDTO>()
+            {
+                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
+                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
+                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
+                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
+                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
+                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" )
+            };
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
+        private void ListView_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
+        }
+
+
     }
 }
