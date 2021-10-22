@@ -1,4 +1,6 @@
-﻿using DoAn_QuanLyQuanCafe.DTO;
+﻿using DoAn_QuanLyQuanCafe.BusinessTier;
+using DoAn_QuanLyQuanCafe.DataContext;
+using DoAn_QuanLyQuanCafe.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,37 +23,56 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
     /// </summary>
     public partial class MenuUserControl : UserControl
     {
+        private ThucUongBT thucUongBT;
+
         public MenuUserControl()
         {
             InitializeComponent();
-            var products = GetProducts();
-            if (products.Count > 0)
-                ListViewProducts.ItemsSource = products;
+            thucUongBT = new ThucUongBT();
         }
 
-        private List<ThucUongDTO> GetProducts()
+
+        private void TaiDanhMenuLenManHinh()
         {
-            return new List<ThucUongDTO>()
-            {
-                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
-                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
-                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
-                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
-                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" ),
-                new ThucUongDTO("Espresso",35.000, "/Images/product0.jpg" )
-            };
+            ListViewProducts.ItemsSource = thucUongBT.LayDanhSachTatCaThucUong();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
+            TaiDanhMenuLenManHinh();
         }
 
-        private void ListView_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+
+
+        private void btnThemVaoHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            int soLuong = 1;
+            Button a = (Button)sender;
+            int maTU = (int)a.Tag;
+            //MessageBox.Show("Ma thuc uong: " + maTU);
+            ThucUong asd = thucUongBT.LayThucUong(maTU);
+            ListViewOrder.Items.Add(new { Name = asd.tenThucUong, Value = asd.price, Image = asd.hinh, soLuong = soLuong });
+
+
+        }
+
+        private void ListViewProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
+        private void ListViewOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
+
+        private void rdbPhanTram_Checked(object sender, RoutedEventArgs e)
+        {
+            var button = sender as RadioButton;
+            // ... Display button content as title.
+            //TextBlock asd = (TextBlock)button.Content;
+            //MessageBox.Show(asd.Text.ToString());
+        }
     }
 }

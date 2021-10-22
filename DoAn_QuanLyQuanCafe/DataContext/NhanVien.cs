@@ -23,11 +23,13 @@ namespace DoAn_QuanLyQuanCafe.DataContext
         public string tenNV { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? namSinh { get; set; }
+        public DateTime namSinh { get; set; }
 
+        [Required]
         [StringLength(11)]
         public string soDienThoai { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string chucVu { get; set; }
 

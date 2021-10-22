@@ -20,7 +20,7 @@ namespace DoAn_QuanLyQuanCafe.DataContext
         [StringLength(50)]
         public string matKhau { get; set; }
 
-        public int? loaiTK { get; set; }
+        public int loaiTK { get; set; }
 
         public int maNV { get; set; }
 

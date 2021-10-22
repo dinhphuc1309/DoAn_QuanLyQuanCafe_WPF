@@ -14,7 +14,7 @@ namespace DoAn_QuanLyQuanCafe.DataContext
 
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<Loai> Loais { get; set; }
+        public virtual DbSet<LoaiThucUong> LoaiThucUongs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
@@ -25,6 +25,11 @@ namespace DoAn_QuanLyQuanCafe.DataContext
             modelBuilder.Entity<HoaDon>()
                 .HasMany(e => e.ChiTietHoaDons)
                 .WithRequired(e => e.HoaDon)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<LoaiThucUong>()
+                .HasMany(e => e.ThucUongs)
+                .WithRequired(e => e.LoaiThucUong)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NhanVien>()

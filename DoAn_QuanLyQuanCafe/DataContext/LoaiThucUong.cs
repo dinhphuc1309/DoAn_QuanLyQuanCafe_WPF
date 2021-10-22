@@ -6,11 +6,11 @@ namespace DoAn_QuanLyQuanCafe.DataContext
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Loai")]
-    public partial class Loai
+    [Table("LoaiThucUong")]
+    public partial class LoaiThucUong
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Loai()
+        public LoaiThucUong()
         {
             ThucUongs = new HashSet<ThucUong>();
         }

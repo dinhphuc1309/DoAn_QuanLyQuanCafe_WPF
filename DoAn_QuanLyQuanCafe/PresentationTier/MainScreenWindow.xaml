@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
         Closed="Window_Closed"
-        Background="#E5E5E5">
+        Background="#F8F8F8">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -33,25 +33,20 @@
                     <RadioButton Width="64" Height="64" Style="{StaticResource RadioButtonCustom}" Checked="MenuClick" Margin="0,0,0,49">
                         <StackPanel>
                             <materialDesign:PackIcon
-          
-                            Kind="Home"
-          
-                            Width="32"
-          
-                            Height="32"
-          
-                            HorizontalAlignment="Center"/>
+                                Kind="Home"
+                                Width="32"
+                                Height="32"
+                                HorizontalAlignment="Center"/>
                             <TextBlock Text="Menu" FontFamily="Google Sans Medium" FontSize="12" />
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Width="64" Height="64" Style="{StaticResource RadioButtonCustom}" Checked="ThongKeClick" Margin="0,0,0,49">
                         <StackPanel>
                             <materialDesign:PackIcon
-                            Kind="AlignVerticalBottom"
-                             Width="32"
-          
-                            Height="32"
-                            HorizontalAlignment="Center" />
+                                Kind="AlignVerticalBottom"
+                                Width="32"
+                                Height="32"
+                                HorizontalAlignment="Center" />
 
                             <TextBlock Text="Thống kê" FontFamily="Google Sans Medium" FontSize="12" />
                         </StackPanel>
@@ -59,11 +54,10 @@
                     <RadioButton Width="64" Height="64" Style="{StaticResource RadioButtonCustom}" Checked="QuanLiClick">
                         <StackPanel>
                             <materialDesign:PackIcon
-                            Kind="Tune"
-                             Width="32"
-          
-                            Height="32"
-                            HorizontalAlignment="Center" />
+                                Kind="Tune"
+                                Width="32"
+                                Height="32"
+                                HorizontalAlignment="Center" />
 
                             <TextBlock Text="Quản lí" FontFamily="Google Sans Medium" FontSize="12" />
                         </StackPanel>
@@ -114,7 +108,7 @@
                     <materialDesign:PackIcon Kind="LogoutVariant" Foreground="#FC6D40"/>
                 </Button>
             </StackPanel>
-            <Border Grid.ColumnSpan="2" BorderBrush="#999999" BorderThickness="1"  VerticalAlignment="Bottom" />
+            <Border Grid.ColumnSpan="2" BorderBrush="#EBEBEB" BorderThickness="1"  VerticalAlignment="Bottom" />
         </Grid>
         <Image Grid.Column="1" Grid.Row="1" Width="412" Height="412" Source="/Images/background.png"/>
         <Frame Grid.Row="1" Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
