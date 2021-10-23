@@ -12,60 +12,82 @@
             <ColumnDefinition Width="400"/>
 
         </Grid.ColumnDefinitions>
-        <ListView x:Name="ListViewQuanLi" Margin="28 69 0 0"  SelectionChanged="ListViewQuanLi_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="Focusable" Value="False"/>
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                    <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                    <Setter Property="Padding" Value="2,0,0,0"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ListViewItem">
-                                <Border Name="Border" Padding="2" SnapsToDevicePixels="true">
-                                    <ContentPresenter />
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected" Value="true">
-                                        <Setter TargetName="Border" Property="Background"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox  
+                
+               x:Name="txtTimThucUong"
+                TextChanged="txtTimThucUong_TextChanged"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                Width="308"  
+                Height="39"
+                materialDesign:HintAssist.Hint="Search"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontFamily="Google Sans Medium" FontSize="14"
+                materialDesign:HintAssist.Foreground="#0A785F"
+                materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"
+                materialDesign:TextFieldAssist.HasClearButton="True"/>
+            
+            <ListView Grid.Row="1" x:Name="ListViewQuanLi" Margin="28 0 0 0"  SelectionChanged="ListViewQuanLi_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                        <Setter Property="Padding" Value="2,0,0,0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border Name="Border" Padding="2" SnapsToDevicePixels="true">
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="true">
+                                            <Setter TargetName="Border" Property="Background"
                                                                 Value="lightgray"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Border Background="#FFFFFF"  Width="560" Height="83" CornerRadius="15" Margin="0 0 0 15">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="81"/>
-                                <ColumnDefinition Width="105"/>
-                                <ColumnDefinition Width="140"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#FFFFFF"  Width="560" Height="83" CornerRadius="15" Margin="0 0 0 15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="81"/>
+                                    <ColumnDefinition Width="105"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                            <Border Width="62" Height="62" CornerRadius="15" Margin="0 0 11 0">
-                                <Border.Background>
-                                    <ImageBrush ImageSource="{Binding Image}"/>
-                                </Border.Background>
-                            </Border>
+                                <Border Width="62" Height="62" CornerRadius="15" Margin="0 0 11 0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding Image}"/>
+                                    </Border.Background>
+                                </Border>
 
-                            <StackPanel Grid.Column="1" Margin="0 12 0 0">
-                                <TextBlock Text="Tên" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D" HorizontalAlignment="Left" Margin="0 0 0 2"/>
-                                <TextBlock x:Name="txtName" Text="{Binding Name}" FontSize="18" FontFamily="Google Sans Medium"/>
-                            </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="0 12 0 0">
+                                    <TextBlock Text="Tên" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D" HorizontalAlignment="Left" Margin="0 0 0 2"/>
+                                    <TextBlock x:Name="txtName" Text="{Binding Name}" FontSize="18" FontFamily="Google Sans Medium"/>
+                                </StackPanel>
 
-                            <StackPanel Grid.Column="2" Margin="0 12 0 0">
-                                <TextBlock Text="Giá" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D" HorizontalAlignment="Left" Margin="0 0 0 2"/>
-                                <TextBlock Text="{Binding Value, StringFormat={}{0:0.000vnđ}}" FontSize="18" FontFamily="Google Sans Medium"/>
-                            </StackPanel>
+                                <StackPanel Grid.Column="2" Margin="0 12 0 0">
+                                    <TextBlock Text="Giá" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D" HorizontalAlignment="Left" Margin="0 0 0 2"/>
+                                    <TextBlock Text="{Binding Value, StringFormat={}{0:0.000vnđ}}" FontSize="18" FontFamily="Google Sans Medium"/>
+                                </StackPanel>
 
-                            <StackPanel Grid.Column="3" Orientation="Horizontal">
-                                <Button
+                                <StackPanel Grid.Column="3" Orientation="Horizontal">
+
+                                    <Button
+                                    Click="btnXoa_Click"
                                     Margin="0 0 28 0"
                                     x:Name="btnXoa"
                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
@@ -77,9 +99,11 @@
                                     materialDesign:ButtonAssist.CornerRadius="15"
                                     BorderThickness="0">
 
-                                </Button>
+                                    </Button>
 
-                                <Button
+                                    <Button
+                                    Click="btnChinhSua_Click"
+                                    Tag="{Binding maThucUong}"
                                     x:Name="btnChinhSua"
                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                                     Background="#0A785F"
@@ -89,13 +113,14 @@
                                     Width="99"
                                     materialDesign:ButtonAssist.CornerRadius="15">
 
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
 
         <materialDesign:Card VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,25,28,0" Grid.Column="1" Width="350" Height="372" materialDesign:ShadowAssist.ShadowDepth="Depth2" UniformCornerRadius="10">
             <materialDesign:Card.Effect>
@@ -103,6 +128,7 @@
             </materialDesign:Card.Effect>
             <StackPanel>
                 <TextBox
+                    x:Name="txtTenThucUong"
                     Margin="0 44 0 15"
                         Style="{StaticResource MaterialDesignFilledTextBox}"
                         AcceptsReturn="True"
@@ -111,7 +137,8 @@
                         materialDesign:HintAssist.Hint="Tên"
                     FontFamily="Google Sans Medium"/>
 
-                <TextBox
+                <TextBox 
+                    x:Name="txtGia"
                     Margin="0 0 0 14"
                         Style="{StaticResource MaterialDesignFilledTextBox}"
                         AcceptsReturn="True"
@@ -120,26 +147,43 @@
                         materialDesign:HintAssist.Hint="Giá"
                     FontFamily="Google Sans Medium"/>
 
-                <Button 
-                    
-                    x:Name="btnImageInput"
-                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                    FontSize="24"
-                    Foreground="#999999"
-                    FontFamily="Google Sans Medium"
-                    Height="110"
-                    Width="276"
-                    materialDesign:ButtonAssist.CornerRadius="10"
-                    BorderThickness="0"
-                    Click="btnImageInput_Click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="{Binding Path=ImageInput}"/>
-                    </Button.Background>
-                </Button>
+                <TextBox 
+                    x:Name="txtLoai"
+                    Margin="0 0 0 14"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MaxWidth="276"
+                        materialDesign:HintAssist.Hint="Loại"
+                    FontFamily="Google Sans Medium"/>
+
+                <TextBox 
+                    x:Name="txtDuongDanHinh"
+                    Margin="0 0 0 14"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MaxWidth="276"
+                        materialDesign:HintAssist.Hint="Đường dẫn hình"
+                    FontFamily="Google Sans Medium"/>
+
 
                 <StackPanel Orientation="Horizontal">
                     <Button 
-                        Margin="40 50 0 0"
+                        Click="btnThem_Click"
+                        Margin="25 30 0 0"
+                        x:Name="btnThem"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Background="#0A785F"
+                        Content="Thêm"
+                        FontFamily="Google Sans Medium"
+                        Height="28"
+                        Width="90"
+                        materialDesign:ButtonAssist.CornerRadius="15">
+                    </Button>
+                    <Button 
+                        Click="btnHuy_Click"
+                        Margin="15 30 0 0"
                         x:Name="btnHuy"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Background="#F8F8F8"
@@ -147,19 +191,22 @@
                         Foreground="#363636"
                         FontFamily="Google Sans Medium"
                         Height="28"
-                        Width="113"
+                        Width="90"
                         materialDesign:ButtonAssist.CornerRadius="15"
                         BorderThickness="0">
                     </Button>
+                    
+
                     <Button 
-                        Margin="43 50 0 0"
-                        x:Name="btnThem"
+                      Click="btnCapNhat_Click"
+                        Margin="15 30 0 0"
+                        x:Name="btnCapNhat"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Background="#0A785F"
-                        Content="Thêm"
+                        Content="Cập nhật"
                         FontFamily="Google Sans Medium"
                         Height="28"
-                        Width="113"
+                        Width="90"
                         materialDesign:ButtonAssist.CornerRadius="15">
                     </Button>
                 </StackPanel>

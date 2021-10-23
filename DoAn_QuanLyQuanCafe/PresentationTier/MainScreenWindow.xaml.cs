@@ -22,7 +22,11 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         public MainScreenWindow()
         {
             InitializeComponent();
+            
+            
         }
+
+        
 
         private void MenuClick(object sender, RoutedEventArgs e)
         {

@@ -12,16 +12,14 @@ namespace DoAn_QuanLyQuanCafe.DataContext
         [Key]
         public int maChiTietHoaDon { get; set; }
 
-        public int maHoaDon { get; set; }
-
         public int maThucUong { get; set; }
+
+        public int maHoaDon { get; set; }
 
         public int soLuong { get; set; }
 
-        public double thanhTien { get; set; }
+        public virtual HoaDon HoaDon { get; set; }
 
         public virtual ThucUong ThucUong { get; set; }
-
-        public virtual HoaDon HoaDon { get; set; }
     }
 }

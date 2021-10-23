@@ -13,17 +13,15 @@ namespace DoAn_QuanLyQuanCafe.DataContext
         public int idTK { get; set; }
 
         [Required]
+        [StringLength(200)]
+        public string tenHienThi { get; set; }
+
+        [Required]
         [StringLength(100)]
         public string useName { get; set; }
 
         [Required]
         [StringLength(50)]
         public string matKhau { get; set; }
-
-        public int loaiTK { get; set; }
-
-        public int maNV { get; set; }
-
-        public virtual NhanVien NhanVien { get; set; }
     }
 }

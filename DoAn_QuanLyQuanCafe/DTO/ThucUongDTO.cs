@@ -12,7 +12,6 @@ namespace DoAn_QuanLyQuanCafe.DTO
         public string Name { get; set; }
         public double Value { get; set; }
         public string Image { get; set; }
-        public string tenLoaiThucUong { get; set; }
 
     }
 }

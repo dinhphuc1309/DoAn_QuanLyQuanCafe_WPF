@@ -20,7 +20,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="74"/>
-                    <RowDefinition Height="312" />
+                    <RowDefinition Height="234" />
                     <RowDefinition/>
 
                 </Grid.RowDefinitions>
@@ -40,16 +40,18 @@
                                     </Grid.ColumnDefinitions>
                                     <Border Width="56" Height="56" CornerRadius="10" Margin="14.54 0 0 0" HorizontalAlignment="Left">
                                         <Border.Background>
-                                            <ImageBrush ImageSource="{Binding Image}"/>
+                                            <ImageBrush ImageSource="{Binding Path=tu.hinh}"/>
                                         </Border.Background>
                                     </Border>
-                                    <StackPanel Grid.Column="1" Margin="0 9 0 0">
-                                        <TextBlock Text="{Binding Name}" FontFamily="Google Sans Medium" FontSize="14" Margin="0 0 0 3.6"/>
-                                        <TextBlock Text="75%"  FontFamily="Google Sans Medium" FontSize="14" Margin="0 0 0 3.6"/>
-                                        <TextBlock Text="{Binding Value, StringFormat={}{0:0.000vnđ}}"  FontFamily="Google Sans Medium" FontSize="14"/>
+                                    <StackPanel Grid.Column="1" Margin="0 20 0 0">
+                                        <TextBlock Text="{Binding Path=tu.tenThucUong}" FontFamily="Google Sans Medium" FontSize="14" Margin="0 0 0 3.6"/>
+
+                                        <TextBlock Text="{Binding Path=tu.price, StringFormat={}{0:0.000vnđ}}"  FontFamily="Google Sans Medium" FontSize="14"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="2" Orientation="Horizontal">
                                         <Button
+                                            Tag ="{Binding Path=tu.maThucUong}"
+                                            Click="btnTru_Click"
                                             x:Name="btnTru"
                                             Margin="0 0 14.49 0"
                                             Width="24"
@@ -61,9 +63,11 @@
                                             <materialDesign:PackIcon Kind="MinusThick" Width="14" Height="14" />
                                         </Button>
 
-                                        <TextBlock Margin="0 0 14.49 0" Text="{Binding soLuong}" FontFamily="Google Sans Medium" FontSize="18" VerticalAlignment="Center"/>
+                                        <TextBlock Margin="0 0 14.49 0" Text="{Binding Path=soLuong}" FontFamily="Google Sans Medium" FontSize="18" VerticalAlignment="Center"/>
 
                                         <Button
+                                            Tag ="{Binding Path=tu.maThucUong}"
+                                            Click="btnCong_Click"
                                             x:Name="btnCong"
                                             Width="24"
                                             Height="24"
@@ -86,10 +90,23 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Thành tiền" FontFamily="Google Sans Medium" FontSize="14" HorizontalAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Text="Tổng" FontFamily="Google Sans Medium" FontSize="14" Foreground="#33C300" HorizontalAlignment="Right"/>
+                        <TextBlock Name="txtThanhTien" Grid.Column="1" Text="Tổng" FontFamily="Google Sans Medium" FontSize="14" Foreground="#33C300" HorizontalAlignment="Right"/>
                     </Grid>
-                    <Button 
-                        Margin="0 60 0 0"
+
+
+                    <TextBox
+                        x:Name="txtGhiChu"
+                        Margin="0 20 0 0"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        Height="80"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"  
+                        materialDesign:HintAssist.Hint="Ghi chú" />
+
+                    <Button
+                        Click="btnThanhToan_Click"
+                        Margin="0 30 0 0"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Background="#0A785F"
                         Content="Thanh toán"
@@ -113,20 +130,19 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <RadioButton Style="{StaticResource RadioButtonCustom}" Margin="87,0,44,0">
-                    <TextBlock Text="Espresso" FontFamily="Google Sans Medium" FontSize="18" />
-                </RadioButton>
-                <RadioButton Style="{StaticResource RadioButtonCustom}">
-                    <TextBlock Text="Phin" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
-                </RadioButton>
-                <RadioButton Style="{StaticResource RadioButtonCustom}">
-                    <TextBlock Text="Trà" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
-                </RadioButton>
-                <RadioButton Style="{StaticResource RadioButtonCustom}">
-                    <TextBlock Text="Khác" FontFamily="Google Sans Medium" FontSize="18" Margin="0,0,44,0"/>
-                </RadioButton>
-            </StackPanel>
+            <TextBox  
+                TextChanged="txtTimThucUong_TextChanged"
+               x:Name="txtTimThucUong"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                Width="308"  
+                Height="39"
+                materialDesign:HintAssist.Hint="Search"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                FontFamily="Google Sans Medium" FontSize="14"
+                materialDesign:HintAssist.Foreground="#0A785F"
+                materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"
+                materialDesign:TextFieldAssist.HasClearButton="True"/>
 
             <ListView Grid.Row="1" Margin="28 0 0 0" x:Name="ListViewProducts"  SelectionChanged="ListViewProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListView.ItemContainerStyle>
@@ -144,8 +160,7 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="true">
-                                            <Setter TargetName="Border" Property="Background"
-                                                                Value="lightgray"/>
+                                            <Setter TargetName="Border" Property="Background" Value="lightgray"/>
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -156,7 +171,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <DockPanel>
-                            <Border Background="#FFFFFF"  Width="560" Height="135" CornerRadius="15" Margin="0 0 0 15">
+                            <!--<Border Background="#FFFFFF"  Width="560" Height="135" CornerRadius="15" Margin="0 0 0 15">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="127"/>
@@ -172,18 +187,18 @@
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1" Margin="0 8 0 0">
-                                        <TextBlock Text="Độ ngọt" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D"/>
+                                        <TextBlock x:Name="DoNgot" Text="Độ ngọt" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D"/>
                                         <Grid Height="60" Margin="15 15 0 0">
-                                            <RadioButton Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <RadioButton Name="pc_0" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Top">
                                                 <TextBlock Text="0%" FontFamily="Google Sans Medium" FontSize="18" />
                                             </RadioButton>
-                                            <RadioButton Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <RadioButton x:Name="pc_25" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Center" VerticalAlignment="Top">
                                                 <TextBlock Text="25%" FontFamily="Google Sans Medium" FontSize="18" />
                                             </RadioButton>
-                                            <RadioButton Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" IsChecked="True" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                            <RadioButton x:Name="pc_50" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" IsChecked="True" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Right" VerticalAlignment="Top">
                                                 <TextBlock Text="50%" FontFamily="Google Sans Medium" FontSize="18" />
                                             </RadioButton>
-                                            <RadioButton Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                            <RadioButton x:Name="pc_75" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                                                 <TextBlock Text="75%" FontFamily="Google Sans Medium" FontSize="18" />
                                             </RadioButton>
                                             <RadioButton x:Name="pc_100" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Center"  VerticalAlignment="Bottom">
@@ -198,6 +213,43 @@
                                                 Tag="{Binding maThucUong}"
                                                 x:Name="btnThemVaoHoaDon"
                                                 Margin="0 31 0 0"
+                                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                                Background="#0A785F"
+                                                Content="Thêm vào hóa đơn"
+                                                FontFamily="Google Sans Medium"
+                                                Height="34"   
+                                                Width="180"
+                                                materialDesign:ButtonAssist.CornerRadius="15"
+                                                Click="btnThemVaoHoaDon_Click">
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>-->
+                            <Border Grid.Row="1" Background="#FFFFFF"  Width="560" Height="100" CornerRadius="15" Margin="0 0 0 15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="127"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Border Width="78" Height="78" CornerRadius="15" Margin="0 5 0 0" VerticalAlignment="Center">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding Image}"/>
+                                        </Border.Background>
+                                    </Border>
+
+
+                                    <TextBlock VerticalAlignment="Center" Grid.Column="1" x:Name="txtName" Text="{Binding Name}" FontSize="24" FontFamily="Google Sans Medium"/>
+
+                                    <StackPanel Grid.Column="2" Margin="0 8 22 0" HorizontalAlignment="Right" >
+                                        <TextBlock Text="Giá" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D" HorizontalAlignment="Right"/>
+                                        <TextBlock Text="{Binding Value, StringFormat={}{0:0.000vnđ}}" FontSize="18" FontFamily="Google Sans Medium" HorizontalAlignment="Right"/>
+                                        <Button 
+                                                Tag="{Binding maThucUong}"
+                                                x:Name="btnThemVaoHoaDon"
+                                                Margin="0 4 0 0"
                                                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                                                 Background="#0A785F"
                                                 Content="Thêm vào hóa đơn"

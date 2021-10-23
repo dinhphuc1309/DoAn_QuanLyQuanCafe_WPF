@@ -1,6 +1,10 @@
 ﻿using DoAn_QuanLyQuanCafe.BusinessTier;
+using DoAn_QuanLyQuanCafe.DataContext;
+using DoAn_QuanLyQuanCafe.DTO;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,36 +37,194 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         private void TaiDanhMenuLenManHinh()
         {
             ListViewQuanLi.ItemsSource = thucUongBT.LayDanhSachTatCaThucUong();
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewQuanLi.ItemsSource);
+            view.Filter = UserFileter;
+        }
+
+        private bool UserFileter(object item)
+        {
+            if (string.IsNullOrEmpty(txtTimThucUong.Text))
+                return true;
+            else
+                return ((item as ThucUongDTO).Name.IndexOf(txtTimThucUong.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void CaiDatChucNang(bool status)
+        {
+            btnThem.IsEnabled = status;
+            btnCapNhat.IsEnabled = !status;
+            btnHuy.IsEnabled = !status;
+     
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             TaiDanhMenuLenManHinh();
+            CaiDatChucNang(true);
         }
+
+      
 
         private void ListViewQuanLi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private string _imageInput = "/Images/backgroudAnh.png";
-        public string ImageInput
+       
+
+   
+        
+
+        private void btnThem_Click(object sender, RoutedEventArgs e)
         {
-            get { return _imageInput; }
-            set
+            if (string.IsNullOrEmpty(txtTenThucUong.Text))
             {
-                if(_imageInput != value)
-                {
-                    _imageInput = value;
-                }
+                TenMonNull tenMonNull = new TenMonNull();
+                tenMonNull.ShowDialog();
+                return;
+            }
+            if (string.IsNullOrEmpty(txtGia.Text))
+            {
+                MessageBox.Show("Vui long nhap gia!!!");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtGia.Text))
+            {
+                MessageBox.Show("Vui long nhap ma loai!!!");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDuongDanHinh.Text))
+            {
+                MessageBox.Show("Vui long đường dẫn!!!");
+                return;
+            }
+            string error;
+            ThucUong thucUong = new ThucUong();
+            thucUong.tenThucUong = txtTenThucUong.Text;
+            thucUong.price = int.Parse(txtGia.Text);
+            thucUong.hinh = txtDuongDanHinh.Text;
+            if (thucUongBT.LuuThucUong(thucUong, out error))
+            {
+                MessageBox.Show("Luu thanh cong!!!");
+                //lam moi danh sach tu DB
+                TaiDanhMenuLenManHinh();
+                txtTenThucUong.Text = "";
+                txtGia.Text = "";
+                txtLoai.Text = "";
+                txtDuongDanHinh.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Loi: " + error);
+                return;
+            }
+        }
+        int maTU;
+
+       
+
+        private void btnChinhSua_Click(object sender, RoutedEventArgs e)
+        {
+         
+            Button a = (Button)sender;
+            maTU = (int)a.Tag;
+            ThucUong asd = thucUongBT.LayThucUong(maTU);
+            txtTenThucUong.Text = asd.tenThucUong;
+            txtGia.Text = asd.price.ToString();
+            txtDuongDanHinh.Text = asd.hinh;
+            CaiDatChucNang(false);
+          
+
+        }
+
+        private void btnXoa_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            if (maTU == -1)
+            {
+                MessageBox.Show("Vui long chon khach hang!!!");
+                return;
+
+            }
+            string error;
+
+            if (thucUongBT.XoaThucUong(maTU, out error))
+            {
+                MessageBox.Show("Xoa thanh cong!!!");
+                //lam moi danh sach tu DB
+                TaiDanhMenuLenManHinh();
+                CaiDatChucNang(true);
+                txtTenThucUong.Text = "";
+                txtGia.Text = "";
+                txtLoai.Text = "";
+                txtDuongDanHinh.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Loi: " + error);
+                return;
             }
         }
 
-
-        private void btnImageInput_Click(object sender, RoutedEventArgs e)
+        private void btnHuy_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
-          
+            CaiDatChucNang(true);
+            txtTenThucUong.Text = "";
+            txtGia.Text = "";
+            txtLoai.Text = "";
+            txtDuongDanHinh.Text = "";
+        }
+
+        private void btnCapNhat_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenThucUong.Text))
+            {
+                MessageBox.Show("Vui long nhap ten KH!!!");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtGia.Text))
+            {
+                MessageBox.Show("Vui long nhap dia chi!!!");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtGia.Text))
+            {
+                MessageBox.Show("Vui long nhap ma loai!!!");
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDuongDanHinh.Text))
+            {
+                MessageBox.Show("Vui long nhap dunog dan!!!");
+                return;
+            }
+            string error;
+            ThucUong thucUong = new ThucUong();
+            thucUong.tenThucUong = txtTenThucUong.Text;
+            thucUong.price = int.Parse(txtGia.Text);
+            thucUong.hinh = txtDuongDanHinh.Text;
+            thucUong.maThucUong = maTU;
+            if (thucUongBT.LuuThucUong(thucUong, out error))
+            {
+                MessageBox.Show("Sua thanh cong!!!");
+                //lam moi danh sach tu DB
+                TaiDanhMenuLenManHinh();
+                CaiDatChucNang(true);
+                txtTenThucUong.Text = "";
+                txtGia.Text = "";
+                txtLoai.Text = "";
+                txtDuongDanHinh.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Loi: " + error);
+                return;
+            }
+        }
+
+        private void txtTimThucUong_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(ListViewQuanLi.ItemsSource).Refresh();
         }
     }
 }

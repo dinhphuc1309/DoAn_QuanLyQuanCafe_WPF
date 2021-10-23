@@ -1,8 +1,10 @@
 ﻿using DoAn_QuanLyQuanCafe.BusinessTier;
 using DoAn_QuanLyQuanCafe.DataContext;
+using DoAn_QuanLyQuanCafe.DataTier;
 using DoAn_QuanLyQuanCafe.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +23,21 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
     /// <summary>
     /// Interaction logic for MenuUserControl.xaml
     /// </summary>
+    /// 
+
     public partial class MenuUserControl : UserControl
     {
+
         private ThucUongBT thucUongBT;
+        class HoaDon_
+        {
+            public ThucUong tu { get; set; }
+            public int soLuong { get; set; }
+        }
 
         public MenuUserControl()
         {
+            DataContext = this;
             InitializeComponent();
             thucUongBT = new ThucUongBT();
         }
@@ -35,6 +46,16 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         private void TaiDanhMenuLenManHinh()
         {
             ListViewProducts.ItemsSource = thucUongBT.LayDanhSachTatCaThucUong();
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource);
+            view.Filter = UserFileter;
+        }
+
+        private bool UserFileter(object item)
+        {
+            if (string.IsNullOrEmpty(txtTimThucUong.Text))
+                return true;
+            else
+                return ((item as ThucUongDTO).Name.IndexOf(txtTimThucUong.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -43,18 +64,63 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             TaiDanhMenuLenManHinh();
         }
 
-
+        private int TinhTien()
+        {
+            int TongTien = 0;
+            foreach (HoaDon_ el in ListViewOrder.Items)
+                TongTien += (int)el.tu.price * el.soLuong;
+            string tongTien = TongTien == 0 ? "0" : TongTien.ToString() + ".000";
+            txtThanhTien.Text = tongTien + " VND";
+            return TongTien;
+        }
 
         private void btnThemVaoHoaDon_Click(object sender, RoutedEventArgs e)
         {
-            int soLuong = 1;
+            Dictionary<int, double> danhSachVatPham = new Dictionary<int, double>();
+
+            //lấy mã thức uống của thẻ được chọn
             Button a = (Button)sender;
             int maTU = (int)a.Tag;
-            //MessageBox.Show("Ma thuc uong: " + maTU);
+            //lấy dữ liệu của đối tượng thức uống theo mã thức uống
             ThucUong asd = thucUongBT.LayThucUong(maTU);
-            ListViewOrder.Items.Add(new { Name = asd.tenThucUong, Value = asd.price, Image = asd.hinh, soLuong = soLuong });
 
+            foreach (HoaDon_ el in ListViewOrder.Items)
+            {
 
+                if (el.tu.maThucUong == asd.maThucUong)
+                {
+                    el.soLuong++;
+                    ListViewOrder.Items.Refresh();
+                    TinhTien();
+                    return;
+                }
+            }
+            ListViewOrder.Items.Add(new HoaDon_ { tu = asd, soLuong = 1 });
+            TinhTien();
+        }
+
+        private void btnThanhToan_Click(object sender, RoutedEventArgs e)
+        {
+            int tongtien = TinhTien();
+            if (tongtien > 0)
+            {
+                HoaDonDT hdDT = new HoaDonDT();
+                int maHoaDon = hdDT.NhapHoaDon(txtGhiChu.Text, tongtien);
+                foreach (HoaDon_ el in ListViewOrder.Items)
+                {
+                    hdDT.NhapCTHoaDon(maHoaDon, el.tu.maThucUong, el.soLuong);
+                    //MessageBox.Show(el.tu.maThucUong + "," + el.soLuong);
+                }
+                txtGhiChu.Text = null;
+                ListViewOrder.Items.Clear();
+                ThemHoaDonThanhCong themHoaDonThanhCong = new ThemHoaDonThanhCong();
+                themHoaDonThanhCong.ShowDialog();
+            }
+            else
+            {
+                ChuaChonMon chuaChonMon = new ChuaChonMon();
+                chuaChonMon.ShowDialog();
+            }
         }
 
         private void ListViewProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,8 +137,46 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         {
             var button = sender as RadioButton;
             // ... Display button content as title.
-            //TextBlock asd = (TextBlock)button.Content;
+            TextBlock asd = (TextBlock)button.Content;
             //MessageBox.Show(asd.Text.ToString());
+        }
+
+        private void btnTru_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int ma = (int)btn.Tag;
+            foreach (HoaDon_ el in ListViewOrder.Items)
+            {
+                if (el.tu.maThucUong == ma && el.soLuong > 0)
+                {
+                    el.soLuong--;
+                    if (el.soLuong <= 0) ListViewOrder.Items.Remove(el);
+                    ListViewOrder.Items.Refresh();
+                    TinhTien();
+                    return;
+                }
+            }
+        }
+
+        private void btnCong_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int ma = (int)btn.Tag;
+            foreach (HoaDon_ el in ListViewOrder.Items)
+            {
+                if (el.tu.maThucUong == ma && el.soLuong > 0)
+                {
+                    el.soLuong++;
+                    ListViewOrder.Items.Refresh();
+                    TinhTien();
+                    return;
+                }
+            }
+        }
+
+        private void txtTimThucUong_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource).Refresh();
         }
     }
 }

@@ -20,7 +20,10 @@ namespace DoAn_QuanLyQuanCafe.DataContext
 
         public DateTime ngayLap { get; set; }
 
-        public double tongTien { get; set; }
+        [StringLength(1000)]
+        public string ghiChu { get; set; }
+
+        public int tongTien { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

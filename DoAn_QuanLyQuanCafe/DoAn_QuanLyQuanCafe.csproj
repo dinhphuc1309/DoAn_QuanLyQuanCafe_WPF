@@ -51,9 +51,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -92,12 +95,10 @@
     <Compile Include="BusinessTier\ThucUongBT.cs" />
     <Compile Include="DataContext\ChiTietHoaDon.cs" />
     <Compile Include="DataContext\HoaDon.cs" />
-    <Compile Include="DataContext\LoaiThucUong.cs" />
-    <Compile Include="DataContext\NhanVien.cs" />
     <Compile Include="DataContext\QuanCafeModel.cs" />
-    <Compile Include="DataContext\sysdiagram.cs" />
     <Compile Include="DataContext\TaiKhoan.cs" />
     <Compile Include="DataContext\ThucUong.cs" />
+    <Compile Include="DataTier\HoaDonDT.cs" />
     <Compile Include="DataTier\TaiKhoanDT.cs" />
     <Compile Include="DataTier\ThucUongDT.cs" />
     <Compile Include="DTO\ThucUongDTO.cs" />
@@ -105,6 +106,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PresentationTier\ChuaChonMon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PresentationTier\ErrorNullTK.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +134,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PresentationTier\TenMonNull.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PresentationTier\ThemHoaDonThanhCong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PresentationTier\ThongBaoDangXuatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +152,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PresentationTier\ChuaChonMon.xaml.cs">
+      <DependentUpon>ChuaChonMon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PresentationTier\ErrorNullTK.xaml.cs">
       <DependentUpon>ErrorNullTK.xaml</DependentUpon>
     </Compile>
@@ -156,6 +172,12 @@
     </Compile>
     <Compile Include="PresentationTier\QuanLiUserControl.xaml.cs">
       <DependentUpon>QuanLiUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationTier\TenMonNull.xaml.cs">
+      <DependentUpon>TenMonNull.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationTier\ThemHoaDonThanhCong.xaml.cs">
+      <DependentUpon>ThemHoaDonThanhCong.xaml</DependentUpon>
     </Compile>
     <Compile Include="PresentationTier\ThongBaoDangXuatWindow.xaml.cs">
       <DependentUpon>ThongBaoDangXuatWindow.xaml</DependentUpon>
@@ -223,6 +245,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\backgroudAnh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon\usericon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon\usericon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon\successicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon\checkicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.2.1\build\MaterialDesignThemes.targets')" />

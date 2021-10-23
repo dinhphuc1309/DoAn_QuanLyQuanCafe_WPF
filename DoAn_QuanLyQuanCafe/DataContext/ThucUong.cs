@@ -22,16 +22,12 @@ namespace DoAn_QuanLyQuanCafe.DataContext
         [StringLength(100)]
         public string tenThucUong { get; set; }
 
-        public double price { get; set; }
+        public int price { get; set; }
 
         [StringLength(1000)]
         public string hinh { get; set; }
 
-        public int maLoai { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-
-        public virtual LoaiThucUong LoaiThucUong { get; set; }
     }
 }

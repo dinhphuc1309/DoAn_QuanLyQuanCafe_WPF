@@ -1,4 +1,5 @@
 ﻿using DoAn_QuanLyQuanCafe.BusinessTier;
+using DoAn_QuanLyQuanCafe.DataContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
+    /// 
+    
     public partial class LoginWindow : Window
     {
         private readonly TaiKhoanBT taikhoanBT;
@@ -57,7 +60,8 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
                 mainScreenWindow = new MainScreenWindow();
                 this.Hide();
                 mainScreenWindow.Show();
-                this.Close();
+                this.Hide();
+
 
             }
             else
