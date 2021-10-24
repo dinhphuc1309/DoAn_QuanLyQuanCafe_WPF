@@ -18,5 +18,13 @@ namespace DoAn_QuanLyQuanCafe.DataTier
             }
 
         }
+
+        public string LayTenHienThi(string useName)
+        {
+            using (var dbContext = new QuanCafeModel())
+            {
+                return dbContext.TaiKhoans.Where(s => s.useName == useName).FirstOrDefault().tenHienThi;
+            }
+        }
     }
 }

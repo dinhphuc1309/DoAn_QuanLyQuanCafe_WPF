@@ -10,7 +10,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="400"/>
-
         </Grid.ColumnDefinitions>
 
         <materialDesign:Card HorizontalAlignment="Right" Margin="0,0,24,0" Width="358" Height="554" Grid.Column="1" UniformCornerRadius="10" >
@@ -22,13 +21,13 @@
                     <RowDefinition Height="74"/>
                     <RowDefinition Height="234" />
                     <RowDefinition/>
-
                 </Grid.RowDefinitions>
+                
                 <TextBlock Margin="15 17 22 0" Text="Hóa đơn"  FontFamily="Google Sans Medium" FontSize="24" />
                 <Border BorderBrush="#F6F6F6" BorderThickness="2" VerticalAlignment="Bottom"/>
 
                 <Border Grid.Row="1" BorderBrush="#F6F6F6" BorderThickness="2" VerticalAlignment="Bottom"/>
-                <ListView Grid.Row="1" x:Name="ListViewOrder"  SelectionChanged="ListViewOrder_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListView Grid.Row="1" x:Name="ListViewOrder" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Grid.Row="2" Width="358" Height="78" CornerRadius="15">
@@ -144,7 +143,7 @@
                 materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"
                 materialDesign:TextFieldAssist.HasClearButton="True"/>
 
-            <ListView Grid.Row="1" Margin="28 0 0 0" x:Name="ListViewProducts"  SelectionChanged="ListViewProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListView Grid.Row="1" Margin="28 0 0 0" x:Name="ListViewProducts" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Focusable" Value="False"/>
@@ -171,60 +170,6 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <DockPanel>
-                            <!--<Border Background="#FFFFFF"  Width="560" Height="135" CornerRadius="15" Margin="0 0 0 15">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="127"/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel HorizontalAlignment="Center" Margin="0 8 0 19">
-                                        <TextBlock x:Name="txtName" Text="{Binding Name}" FontSize="18" FontFamily="Google Sans Medium"/>
-                                        <Border Width="78" Height="78" CornerRadius="10" Margin="0 7 0 0">
-                                            <Border.Background>
-                                                <ImageBrush ImageSource="{Binding Image}"/>
-                                            </Border.Background>
-                                        </Border>
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" Margin="0 8 0 0">
-                                        <TextBlock x:Name="DoNgot" Text="Độ ngọt" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D"/>
-                                        <Grid Height="60" Margin="15 15 0 0">
-                                            <RadioButton Name="pc_0" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                                <TextBlock Text="0%" FontFamily="Google Sans Medium" FontSize="18" />
-                                            </RadioButton>
-                                            <RadioButton x:Name="pc_25" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Center" VerticalAlignment="Top">
-                                                <TextBlock Text="25%" FontFamily="Google Sans Medium" FontSize="18" />
-                                            </RadioButton>
-                                            <RadioButton x:Name="pc_50" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" IsChecked="True" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                                <TextBlock Text="50%" FontFamily="Google Sans Medium" FontSize="18" />
-                                            </RadioButton>
-                                            <RadioButton x:Name="pc_75" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                                                <TextBlock Text="75%" FontFamily="Google Sans Medium" FontSize="18" />
-                                            </RadioButton>
-                                            <RadioButton x:Name="pc_100" Checked="rdbPhanTram_Checked" Tag="{Binding maThucUong}" Style="{StaticResource RadioButtonCustom}" HorizontalAlignment="Center"  VerticalAlignment="Bottom">
-                                                <TextBlock Text="100%" FontFamily="Google Sans Medium" FontSize="18" />
-                                            </RadioButton>
-                                        </Grid>
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="2" Margin="0 8 22 0" HorizontalAlignment="Right" >
-                                        <TextBlock Text="Giá" FontSize="14" FontFamily="Google Sans Medium" Foreground="#7D7D7D" HorizontalAlignment="Right"/>
-                                        <TextBlock Text="{Binding Value, StringFormat={}{0:0.000vnđ}}" FontSize="18" FontFamily="Google Sans Medium" HorizontalAlignment="Right"/>
-                                        <Button 
-                                                Tag="{Binding maThucUong}"
-                                                x:Name="btnThemVaoHoaDon"
-                                                Margin="0 31 0 0"
-                                                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                                Background="#0A785F"
-                                                Content="Thêm vào hóa đơn"
-                                                FontFamily="Google Sans Medium"
-                                                Height="34"   
-                                                Width="180"
-                                                materialDesign:ButtonAssist.CornerRadius="15"
-                                                Click="btnThemVaoHoaDon_Click">
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
-                            </Border>-->
                             <Border Grid.Row="1" Background="#FFFFFF"  Width="560" Height="100" CornerRadius="15" Margin="0 0 0 15">
                                 <Grid>
                                     <Grid.ColumnDefinitions>

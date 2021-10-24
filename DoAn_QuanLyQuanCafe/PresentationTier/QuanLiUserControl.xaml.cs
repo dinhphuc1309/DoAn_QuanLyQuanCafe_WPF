@@ -65,17 +65,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             CaiDatChucNang(true);
         }
 
-      
-
-        private void ListViewQuanLi_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-       
-
-   
-        
 
         private void btnThem_Click(object sender, RoutedEventArgs e)
         {
@@ -113,9 +102,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             }
         }
         int maTU;
-
-       
-
         private void btnChinhSua_Click(object sender, RoutedEventArgs e)
         {
          
@@ -212,10 +198,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             CollectionViewSource.GetDefaultView(ListViewQuanLi.ItemsSource).Refresh();
         }
 
-        private void btnXoa_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void txtGia_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

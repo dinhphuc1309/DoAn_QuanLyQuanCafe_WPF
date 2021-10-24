@@ -12,7 +12,7 @@
         AllowsTransparency="True"
         MouseDown="Window_MouseDown">
     <Grid>
-        <Border 
+        <Border
                 Background="#F8F8F8" 
                 CornerRadius="25" >
         </Border>

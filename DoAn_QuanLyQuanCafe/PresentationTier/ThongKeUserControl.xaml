@@ -20,7 +20,9 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock VerticalAlignment="Bottom" Margin="20 0 0 0" FontFamily="Google Sans Medium" FontSize="25" Text="Hóa đơn"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Bottom" Margin="20 0 0 0" FontFamily="Google Sans Medium" FontSize="25" Text="Hóa đơn"/>
+                </StackPanel>
 
                 <ListView Grid.Row="1" x:Name="listViewHoaDon" SelectionChanged="listViewHoaDon_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
                     <ListView.View>
@@ -57,10 +59,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
             </Grid>
-
-
         </materialDesign:Card>
     </Grid>
 </UserControl>

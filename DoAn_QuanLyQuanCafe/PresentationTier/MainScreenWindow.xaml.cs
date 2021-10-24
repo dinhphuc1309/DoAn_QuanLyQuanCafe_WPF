@@ -19,11 +19,12 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
     /// </summary>
     public partial class MainScreenWindow : Window
     {
-        public MainScreenWindow()
+        private string tenNVHienThi;
+        public MainScreenWindow(string tenNV)
         {
             InitializeComponent();
-            
-            
+            tenNVHienThi = tenNV;
+
         }
 
         
@@ -63,6 +64,11 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         {
             ThongBaoDangXuatWindow thongBaoDangXuatWindow = new ThongBaoDangXuatWindow();
             thongBaoDangXuatWindow.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtTenNV.Text = tenNVHienThi;
         }
     }
 }

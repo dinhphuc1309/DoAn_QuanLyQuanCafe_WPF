@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainScreenWindow"  Height="720" Width="1080"
+        Title="Beverage Store"  Height="720" Width="1080"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
         Closed="Window_Closed"
-        Background="#F8F8F8">
+        Background="#F8F8F8"
+        Loaded="Window_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -77,31 +78,31 @@
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Beverage Store"
-                       Margin=" 0 0 26 15"
-                        HorizontalAlignment="Right"
+            <TextBlock 
+                Text="Beverage Store" 
+                Margin=" 0 0 26 15" 
+                HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                        FontFamily="Google Sans Medium" FontSize="45"
-                       Foreground="#0A785F"/>
+                FontFamily="Google Sans Medium" FontSize="45"   
+                Foreground="#0A785F"/>
 
 
-            <DockPanel Grid.Column="1" Margin="100,0,0,0" >
+            <DockPanel Grid.Column="1" Margin="80,0,0,0" >
                 <Border Width="48" Height="48" CornerRadius="24">
                     <Border.Background>
                         <ImageBrush ImageSource="/Icon/usericon2.png"/>
                     </Border.Background>
                 </Border>
                 <StackPanel>
-                    <TextBlock Margin="11 25 0 0" x:Name="txtTenNV" HorizontalAlignment="Left" Text="Lê đình phúc"  FontFamily="Google Sans Medium" FontSize="18" />
+                    <TextBlock Margin="11 25 0 0" x:Name="txtTenNV" HorizontalAlignment="Left"  FontFamily="Google Sans Medium" FontSize="18" />
                     <Button
                         HorizontalAlignment="Left"
                         Width="35"
                         Height="35"
-                    x:Name="btnLogOut"
-                    Click="btnLogOut_Click"
-                    Style="{StaticResource MaterialDesignIconForegroundButton}"
-                    ToolTip="MaterialDesignIconForegroundButton"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        x:Name="btnLogOut"
+                        Click="btnLogOut_Click"
+                        Style="{StaticResource MaterialDesignIconForegroundButton}"
+                        ToolTip="MaterialDesignIconForegroundButton">
                         <materialDesign:PackIcon Kind="LogoutVariant" Foreground="#FC6D40"/>
                     </Button>
                 </StackPanel>

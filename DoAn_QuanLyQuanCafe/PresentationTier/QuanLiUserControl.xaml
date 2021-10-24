@@ -17,9 +17,8 @@
                 <RowDefinition Height="65"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox  
-                
-               x:Name="txtTimThucUong"
+            <TextBox 
+                x:Name="txtTimThucUong"
                 TextChanged="txtTimThucUong_TextChanged"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center" 
@@ -32,7 +31,7 @@
                 materialDesign:TextFieldAssist.UnderlineBrush="#0A785F"
                 materialDesign:TextFieldAssist.HasClearButton="True"/>
             
-            <ListView Grid.Row="1" x:Name="ListViewQuanLi" Margin="28 0 0 0"  SelectionChanged="ListViewQuanLi_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListView Grid.Row="1" x:Name="ListViewQuanLi" Margin="28 0 0 0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Focusable" Value="False"/>
@@ -84,9 +83,10 @@
                                     <TextBlock Text="{Binding Value, StringFormat={}{0:0.000vnđ}}" FontSize="18" FontFamily="Google Sans Medium"/>
                                 </StackPanel>
 
-                               
-                                <Button Grid.Column="3" HorizontalAlignment="Right"
-                                        Margin=" 0 0 20 0" 
+
+                                <Button 
+                                    Grid.Column="3" HorizontalAlignment="Right" 
+                                    Margin=" 0 0 20 0" 
                                     Click="btnChinhSua_Click"
                                     Tag="{Binding maThucUong}"
                                     x:Name="btnChinhSua"
@@ -97,7 +97,6 @@
                                     Height="32"
                                     Width="99"
                                     materialDesign:ButtonAssist.CornerRadius="15">
-
                                 </Button>
                             </Grid>
                         </Border>
@@ -116,33 +115,33 @@
                 <TextBox
                     x:Name="txtTenThucUong"
                     Margin="0 44 0 15"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        AcceptsReturn="True"
-                        TextWrapping="Wrap"
-                        MaxWidth="276"
-                        materialDesign:HintAssist.Hint="Tên"
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    MaxWidth="276"
+                    materialDesign:HintAssist.Hint="Tên"
                     FontFamily="Google Sans Medium"/>
 
                 <TextBox 
                     PreviewTextInput="txtGia_PreviewTextInput"
                     x:Name="txtGia"
                     Margin="0 0 0 14"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        AcceptsReturn="True"
-                        TextWrapping="Wrap"
-                        MaxWidth="276"
-                        materialDesign:HintAssist.Hint="Giá"
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    MaxWidth="276"
+                    materialDesign:HintAssist.Hint="Giá"
                     FontFamily="Google Sans Medium"/>
 
 
                 <TextBox 
                     x:Name="txtDuongDanHinh"
                     Margin="0 0 0 50"
-                        Style="{StaticResource MaterialDesignFilledTextBox}"
-                        AcceptsReturn="True"
-                        TextWrapping="Wrap"
-                        MaxWidth="276"
-                        materialDesign:HintAssist.Hint="Đường dẫn hình"
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    MaxWidth="276"
+                    materialDesign:HintAssist.Hint="Đường dẫn hình"
                     FontFamily="Google Sans Medium"/>
 
 
@@ -150,69 +149,63 @@
                     <StackPanel Margin="36 0 0 0" >
                         <Button 
                             Margin="0 0 0 20"
-                        Click="btnThem_Click"
-                        x:Name="btnThem"
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Background="#0A785F"
-                        Content="Thêm"
-                        FontFamily="Google Sans Medium"
-                        Height="32"
-                        Width="110"
-                        materialDesign:ButtonAssist.CornerRadius="15">
+                            Click="btnThem_Click"
+                            x:Name="btnThem"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Background="#0A785F"
+                            Content="Thêm"
+                            FontFamily="Google Sans Medium"
+                            Height="32"
+                            Width="110"
+                            materialDesign:ButtonAssist.CornerRadius="15">
                         </Button>
 
 
                         <Button 
-                      Click="btnCapNhat_Click"
-                        x:Name="btnCapNhat"
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Background="#0A785F"
-                        Content="Cập nhật"
-                        FontFamily="Google Sans Medium"
-                        Height="32"
-                        Width="110"
-                        materialDesign:ButtonAssist.CornerRadius="15">
+                            Click="btnCapNhat_Click"
+                            x:Name="btnCapNhat"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Background="#0A785F"
+                            Content="Cập nhật"
+                            FontFamily="Google Sans Medium"
+                            Height="32"
+                            Width="110"
+                            materialDesign:ButtonAssist.CornerRadius="15">
                         </Button>
                     </StackPanel>
 
                     <StackPanel Margin="55 0 0 0">
                         <Button 
                             Margin="0 0 0 20"
-                        Click="btnHuy_Click"
-                        x:Name="btnHuy"
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Background="#F8F8F8"
-                        Content="Hủy"
-                        Foreground="#363636"
-                        FontFamily="Google Sans Medium"
-                        Height="32"
-                        Width="110"
-                        materialDesign:ButtonAssist.CornerRadius="15"
-                        BorderThickness="0">
+                            Click="btnHuy_Click"
+                            x:Name="btnHuy"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Background="#F8F8F8"
+                            Content="Hủy"
+                            Foreground="#363636"
+                            FontFamily="Google Sans Medium"
+                            Height="32"
+                            Width="110"
+                            materialDesign:ButtonAssist.CornerRadius="15"
+                            BorderThickness="0">
                         </Button>
-                        
+
                         <Button 
                             Click="btnXoa_Click"
-                        x:Name="btnXoa"
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Background="#F8F8F8"
-                        Content="Xóa"
-                        Foreground="#363636"
-                        FontFamily="Google Sans Medium"
-                        Height="32"
-                        Width="110"
-                        materialDesign:ButtonAssist.CornerRadius="15"
-                        BorderThickness="0">
+                            x:Name="btnXoa"
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Background="#F8F8F8"
+                            Content="Xóa"
+                            Foreground="#363636"
+                            FontFamily="Google Sans Medium"
+                            Height="32"
+                            Width="110"
+                            materialDesign:ButtonAssist.CornerRadius="15"
+                            BorderThickness="0">
                         </Button>
                     </StackPanel>
-                   
-                   
-                    
-
                 </StackPanel>
-
             </StackPanel>
-
         </materialDesign:Card>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
 ﻿using DoAn_QuanLyQuanCafe.DataTier;
+using DoAn_QuanLyQuanCafe.Libs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace DoAn_QuanLyQuanCafe.BusinessTier
         }
         public bool KiemTraDangNhap(string userName, string passWord)
         {
-
+            passWord = Helpers.MaHoaMatKhauMd5(Helpers.MaHoaMatKhauBase64(passWord));
             return taikhoanDT.KiemTraDangNhap(userName, passWord);
         }
     }

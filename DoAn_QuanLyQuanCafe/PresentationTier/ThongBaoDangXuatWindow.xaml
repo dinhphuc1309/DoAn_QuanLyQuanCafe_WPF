@@ -23,25 +23,25 @@
                 <Button
                     x:Name="btnCo"
                     Margin="62,0,36,0"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Background="#FFFFFF"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    Background="#FFFFFF"
                     Foreground="#363636"
-                Content="Có"
-                FontFamily="Google Sans Medium"
-                Height="32"
-                Width="114"
-                materialDesign:ButtonAssist.CornerRadius="15" Click="btnCo_Click"
+                    Content="Có"
+                    FontFamily="Google Sans Medium"
+                    Height="32"
+                    Width="114"
+                    materialDesign:ButtonAssist.CornerRadius="15" Click="btnCo_Click"
                     BorderThickness="0">
                 </Button>
                 <Button
                     x:Name="btnKhong"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Background="#0A785F"
-                Content="Không"
-                FontFamily="Google Sans Medium"
-                Height="32"
-                Width="114"
-                materialDesign:ButtonAssist.CornerRadius="15" Click="btnKhong_Click" >
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    Background="#0A785F"
+                    Content="Không"
+                    FontFamily="Google Sans Medium"
+                    Height="32"
+                    Width="114"
+                    materialDesign:ButtonAssist.CornerRadius="15" Click="btnKhong_Click" >
                 </Button>
             </StackPanel>
         </StackPanel>

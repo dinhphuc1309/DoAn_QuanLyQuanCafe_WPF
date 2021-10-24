@@ -126,16 +126,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             }
         }
 
-        private void ListViewProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListViewOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
 
         private void btnTru_Click(object sender, RoutedEventArgs e)
         {

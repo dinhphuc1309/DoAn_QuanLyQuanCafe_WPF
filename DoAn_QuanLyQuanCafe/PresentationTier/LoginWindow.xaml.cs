@@ -1,5 +1,6 @@
 ﻿using DoAn_QuanLyQuanCafe.BusinessTier;
 using DoAn_QuanLyQuanCafe.DataContext;
+using DoAn_QuanLyQuanCafe.DataTier;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,16 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
     public partial class LoginWindow : Window
     {
         private readonly TaiKhoanBT taikhoanBT;
+        TaiKhoanDT taiKhoanDT;
         MainScreenWindow mainScreenWindow;
         ErrorNullTK errorNullTK;
         ErrorSaiTKMK errorSaiTKMK;
         public LoginWindow()
         {
-            taikhoanBT = new TaiKhoanBT();
+            
             InitializeComponent();
+            taikhoanBT = new TaiKhoanBT();
+            taiKhoanDT = new TaiKhoanDT();
         }
 
 
@@ -57,10 +61,9 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
 
             if (taikhoanBT.KiemTraDangNhap(userName, passWord))
             {
-                mainScreenWindow = new MainScreenWindow();
-                this.Hide();
+                mainScreenWindow = new MainScreenWindow(taiKhoanDT.LayTenHienThi(userName));
+                this.Close();
                 mainScreenWindow.Show();
-                this.Hide();
 
 
             }
