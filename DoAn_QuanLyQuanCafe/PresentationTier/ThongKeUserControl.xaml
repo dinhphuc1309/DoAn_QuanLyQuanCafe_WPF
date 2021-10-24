@@ -4,12 +4,62 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Loaded="UserControl_Loaded">
     <Grid>
-        <materialDesign:Card Width="495" Height="474" materialDesign:ShadowAssist.ShadowDepth="Depth2" UniformCornerRadius="10">
+        <materialDesign:Card Width="600" Height="495" materialDesign:ShadowAssist.ShadowDepth="Depth2" UniformCornerRadius="10">
             <materialDesign:Card.Effect>
                 <DropShadowEffect Color="#FF6D8DAD" Opacity="0.15"/>
             </materialDesign:Card.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock VerticalAlignment="Bottom" Margin="20 0 0 0" FontFamily="Google Sans Medium" FontSize="25" Text="Hóa đơn"/>
+
+                <ListView Grid.Row="1" x:Name="listViewHoaDon" SelectionChanged="listViewHoaDon_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding MaHoaDon}"
+                                Header="Mã hóa đơn" />
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding NgayMua}"
+                                Header="Ngày lập" />
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding TongTien, StringFormat={}{0:0.000vnđ}}"
+                                Header="Tổng tiền" />
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding GhiChu}"
+                                Header="Ghi chú" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <TextBlock Grid.Row="2" VerticalAlignment="Bottom" Margin="20 0 0 0" FontFamily="Google Sans Medium" FontSize="25" Text="Chi tiết hóa đơn"/>
+                <ListView Grid.Row="3" x:Name="listViewChiTietHoaDon">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding MaHoaDon}"
+                                Header="Mã hóa đơn" />
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding TenThucUong}"
+                                Header="Tên món" />
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding SoLuong}"
+                                Header="Số lượng" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </Grid>
+
 
         </materialDesign:Card>
     </Grid>

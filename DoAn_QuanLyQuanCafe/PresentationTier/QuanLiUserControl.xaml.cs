@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,6 +55,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             btnThem.IsEnabled = status;
             btnCapNhat.IsEnabled = !status;
             btnHuy.IsEnabled = !status;
+            btnXoa.IsEnabled = !status;
      
         }
 
@@ -85,17 +87,8 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             }
             if (string.IsNullOrEmpty(txtGia.Text))
             {
-                MessageBox.Show("Vui long nhap gia!!!");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtGia.Text))
-            {
-                MessageBox.Show("Vui long nhap ma loai!!!");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDuongDanHinh.Text))
-            {
-                MessageBox.Show("Vui long đường dẫn!!!");
+                GiaNull giaNull = new GiaNull();
+                giaNull.ShowDialog();
                 return;
             }
             string error;
@@ -105,17 +98,17 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             thucUong.hinh = txtDuongDanHinh.Text;
             if (thucUongBT.LuuThucUong(thucUong, out error))
             {
-                MessageBox.Show("Luu thanh cong!!!");
+                ThemMonThanhCong themMonThanhCong = new ThemMonThanhCong();
+                themMonThanhCong.ShowDialog();
                 //lam moi danh sach tu DB
                 TaiDanhMenuLenManHinh();
                 txtTenThucUong.Text = "";
                 txtGia.Text = "";
-                txtLoai.Text = "";
                 txtDuongDanHinh.Text = "";
             }
             else
             {
-                MessageBox.Show("Loi: " + error);
+                MessageBox.Show("Lỗi: " + error);
                 return;
             }
         }
@@ -143,7 +136,8 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
 
             if (maTU == -1)
             {
-                MessageBox.Show("Vui long chon khach hang!!!");
+                ChuaChonMon chuaChonMon = new ChuaChonMon();
+                chuaChonMon.ShowDialog();
                 return;
 
             }
@@ -151,18 +145,18 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
 
             if (thucUongBT.XoaThucUong(maTU, out error))
             {
-                MessageBox.Show("Xoa thanh cong!!!");
+                XoaMonThanhCong xoaMonThanhCong = new XoaMonThanhCong();
+                xoaMonThanhCong.ShowDialog();
                 //lam moi danh sach tu DB
                 TaiDanhMenuLenManHinh();
                 CaiDatChucNang(true);
                 txtTenThucUong.Text = "";
                 txtGia.Text = "";
-                txtLoai.Text = "";
                 txtDuongDanHinh.Text = "";
             }
             else
             {
-                MessageBox.Show("Loi: " + error);
+                MessageBox.Show("Lỗi: " + error);
                 return;
             }
         }
@@ -172,7 +166,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             CaiDatChucNang(true);
             txtTenThucUong.Text = "";
             txtGia.Text = "";
-            txtLoai.Text = "";
             txtDuongDanHinh.Text = "";
         }
 
@@ -180,22 +173,14 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         {
             if (string.IsNullOrEmpty(txtTenThucUong.Text))
             {
-                MessageBox.Show("Vui long nhap ten KH!!!");
+                TenMonNull tenMonNull = new TenMonNull();
+                tenMonNull.ShowDialog();
                 return;
             }
             if (string.IsNullOrEmpty(txtGia.Text))
             {
-                MessageBox.Show("Vui long nhap dia chi!!!");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtGia.Text))
-            {
-                MessageBox.Show("Vui long nhap ma loai!!!");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDuongDanHinh.Text))
-            {
-                MessageBox.Show("Vui long nhap dunog dan!!!");
+                GiaNull giaNull = new GiaNull();
+                giaNull.ShowDialog();
                 return;
             }
             string error;
@@ -206,18 +191,18 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             thucUong.maThucUong = maTU;
             if (thucUongBT.LuuThucUong(thucUong, out error))
             {
-                MessageBox.Show("Sua thanh cong!!!");
+                SuaThangCong suaThangCong = new SuaThangCong();
+                suaThangCong.ShowDialog();
                 //lam moi danh sach tu DB
                 TaiDanhMenuLenManHinh();
                 CaiDatChucNang(true);
                 txtTenThucUong.Text = "";
                 txtGia.Text = "";
-                txtLoai.Text = "";
                 txtDuongDanHinh.Text = "";
             }
             else
             {
-                MessageBox.Show("Loi: " + error);
+                MessageBox.Show("Lỗi: " + error);
                 return;
             }
         }
@@ -225,6 +210,17 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         private void txtTimThucUong_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(ListViewQuanLi.ItemsSource).Refresh();
+        }
+
+        private void btnXoa_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txtGia_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

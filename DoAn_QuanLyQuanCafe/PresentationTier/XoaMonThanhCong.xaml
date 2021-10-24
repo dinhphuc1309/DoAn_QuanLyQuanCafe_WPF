@@ -1,4 +1,4 @@
-﻿<Window x:Class="DoAn_QuanLyQuanCafe.PresentationTier.TenMonNull"
+﻿<Window x:Class="DoAn_QuanLyQuanCafe.PresentationTier.XoaMonThanhCong"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DoAn_QuanLyQuanCafe.PresentationTier"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="TenMonNull" Height="264" Width="388"
+        Title="XoaMonThanhCong" Height="264" Width="388"
         WindowStyle="None" ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
@@ -17,8 +17,8 @@
                 CornerRadius="25">
         </Border>
         <StackPanel>
-            <Image Source="/Icon/erroricon.png" Width="75" Height="75" Margin="0,33,0,24"/>
-            <TextBlock Text="Vui lòng nhập tên thức uống" FontSize="18" HorizontalAlignment="Center" FontFamily="Google Sans Medium" Margin="0,0,0,31" />
+            <Image Source="/Icon/checkicon.png" Width="75" Height="75" Margin="0,33,0,24"/>
+            <TextBlock Text="Xóa thức uống thành công" FontSize="18" HorizontalAlignment="Center" FontFamily="Google Sans Medium" Margin="0,0,0,31" />
             <Button 
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Background="#0A785F"

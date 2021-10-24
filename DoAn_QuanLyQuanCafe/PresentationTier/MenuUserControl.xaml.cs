@@ -28,7 +28,9 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
     public partial class MenuUserControl : UserControl
     {
 
+        private HoaDonDT hoaDonDT;
         private ThucUongBT thucUongBT;
+        private ChiTietHoaDonDT chiTietHoaDonDT;
         class HoaDon_
         {
             public ThucUong tu { get; set; }
@@ -40,6 +42,8 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             DataContext = this;
             InitializeComponent();
             thucUongBT = new ThucUongBT();
+            hoaDonDT = new HoaDonDT();
+            chiTietHoaDonDT = new ChiTietHoaDonDT();
         }
 
 
@@ -70,7 +74,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             foreach (HoaDon_ el in ListViewOrder.Items)
                 TongTien += (int)el.tu.price * el.soLuong;
             string tongTien = TongTien == 0 ? "0" : TongTien.ToString() + ".000";
-            txtThanhTien.Text = tongTien + " VND";
+            txtThanhTien.Text = tongTien + "vnđ";
             return TongTien;
         }
 
@@ -103,12 +107,11 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         {
             int tongtien = TinhTien();
             if (tongtien > 0)
-            {
-                HoaDonDT hdDT = new HoaDonDT();
-                int maHoaDon = hdDT.NhapHoaDon(txtGhiChu.Text, tongtien);
+            {  
+                int maHoaDon = hoaDonDT.NhapHoaDon(txtGhiChu.Text, tongtien);
                 foreach (HoaDon_ el in ListViewOrder.Items)
                 {
-                    hdDT.NhapCTHoaDon(maHoaDon, el.tu.maThucUong, el.soLuong);
+                    chiTietHoaDonDT.NhapCTHoaDon(maHoaDon, el.tu.maThucUong, el.soLuong);
                     //MessageBox.Show(el.tu.maThucUong + "," + el.soLuong);
                 }
                 txtGhiChu.Text = null;
@@ -133,13 +136,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
 
         }
 
-        private void rdbPhanTram_Checked(object sender, RoutedEventArgs e)
-        {
-            var button = sender as RadioButton;
-            // ... Display button content as title.
-            TextBlock asd = (TextBlock)button.Content;
-            //MessageBox.Show(asd.Text.ToString());
-        }
 
         private void btnTru_Click(object sender, RoutedEventArgs e)
         {
