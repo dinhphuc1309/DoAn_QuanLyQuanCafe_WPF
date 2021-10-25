@@ -134,15 +134,34 @@
                     FontFamily="Google Sans Medium"/>
 
 
-                <TextBox 
-                    x:Name="txtDuongDanHinh"
-                    Margin="0 0 0 50"
-                    Style="{StaticResource MaterialDesignFilledTextBox}"
-                    AcceptsReturn="True"
-                    TextWrapping="Wrap"
-                    MaxWidth="276"
-                    materialDesign:HintAssist.Hint="Đường dẫn hình"
-                    FontFamily="Google Sans Medium"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 50">
+                    <TextBox 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Width="200"
+                        Height="45"
+                        x:Name="txtDuongDanHinh"
+                        Margin="0 0 15 0"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MaxWidth="276"
+                        materialDesign:HintAssist.Hint="Đường dẫn hình"
+                        FontFamily="Google Sans Medium"/>
+                    <Button     
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Click="btnThemHinh_Click"
+                        x:Name="btnThemHinh"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Background="#0A785F"
+                        Content="Mở"
+                        FontFamily="Google Sans Medium"
+                        Height="32"
+                        Width="60"  
+                        materialDesign:ButtonAssist.CornerRadius="15">
+                    </Button>
+                </StackPanel>
 
 
                 <StackPanel Orientation="Horizontal">

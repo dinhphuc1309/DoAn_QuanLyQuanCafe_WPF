@@ -206,5 +206,15 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void btnThemHinh_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Filter = "|*.jpg";
+            if(openFileDialog.ShowDialog() == true)
+            {
+                txtDuongDanHinh.Text = openFileDialog.FileName;
+            }
+        }
     }
 }
