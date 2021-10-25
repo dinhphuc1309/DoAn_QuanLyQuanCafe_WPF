@@ -41,6 +41,7 @@
                                 Header="Ghi chú" />
                         </GridView>
                     </ListView.View>
+                    
                 </ListView>
 
                 <TextBlock Grid.Row="2" VerticalAlignment="Bottom" Margin="20 0 0 0" FontFamily="Google Sans Medium" FontSize="25" Text="Chi tiết hóa đơn"/>

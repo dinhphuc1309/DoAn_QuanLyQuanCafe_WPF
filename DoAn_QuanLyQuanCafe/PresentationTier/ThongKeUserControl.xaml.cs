@@ -1,8 +1,11 @@
 ﻿using DoAn_QuanLyQuanCafe.BusinessTier;
+using DoAn_QuanLyQuanCafe.DataContext;
 using DoAn_QuanLyQuanCafe.DataTier;
 using DoAn_QuanLyQuanCafe.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +38,8 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         private void TaiDanhSachHoaDonLenManHinh()
         {
             listViewHoaDon.ItemsSource = hoaDonBT.LayDanhSachTatCaHoaDon();
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listViewHoaDon.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("MaHoaDon", ListSortDirection.Descending));
 
         }
 
@@ -43,11 +48,11 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             TaiDanhSachHoaDonLenManHinh();
         }
 
-
         private void listViewHoaDon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int maHoaDonChon = int.Parse(listViewHoaDon.SelectedIndex.ToString())+1;
-            listViewChiTietHoaDon.ItemsSource = chiTietHoaDonBT.LayDanhSachChiTietTheoMaHoaDon(maHoaDonChon);
+            HoaDonDTO item = ((ListView)sender).SelectedItem as HoaDonDTO;
+
+            listViewChiTietHoaDon.ItemsSource = chiTietHoaDonBT.LayDanhSachChiTietTheoMaHoaDon(item.MaHoaDon); // nay de hien chi tiet hoa don h lay mahoadonchon dua vao la dc
         }
     }
 }
