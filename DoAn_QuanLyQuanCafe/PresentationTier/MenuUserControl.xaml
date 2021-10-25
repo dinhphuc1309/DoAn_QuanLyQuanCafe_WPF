@@ -89,7 +89,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Thành tiền" FontFamily="Google Sans Medium" FontSize="14" HorizontalAlignment="Left"/>
-                        <TextBlock Name="txtThanhTien" Grid.Column="1" Text="Tổng" FontFamily="Google Sans Medium" FontSize="14" Foreground="#33C300" HorizontalAlignment="Right"/>
+                        <TextBlock Name="txtThanhTien" Grid.Column="1" Text="0vnđ" FontFamily="Google Sans Medium" FontSize="14" Foreground="#33C300" HorizontalAlignment="Right"/>
                     </Grid>
 
 

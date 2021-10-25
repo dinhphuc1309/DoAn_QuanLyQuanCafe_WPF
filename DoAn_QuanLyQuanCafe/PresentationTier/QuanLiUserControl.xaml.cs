@@ -4,6 +4,7 @@ using DoAn_QuanLyQuanCafe.DTO;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             ListViewQuanLi.ItemsSource = thucUongBT.LayDanhSachTatCaThucUong();
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewQuanLi.ItemsSource);
             view.Filter = UserFileter;
+            view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
         }
 
         private bool UserFileter(object item)

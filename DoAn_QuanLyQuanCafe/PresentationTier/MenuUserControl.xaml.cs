@@ -52,6 +52,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             ListViewProducts.ItemsSource = thucUongBT.LayDanhSachTatCaThucUong();
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewProducts.ItemsSource);
             view.Filter = UserFileter;
+            view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
         }
 
         private bool UserFileter(object item)
@@ -114,6 +115,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
                     chiTietHoaDonDT.NhapCTHoaDon(maHoaDon, el.tu.maThucUong, el.soLuong);
                     //MessageBox.Show(el.tu.maThucUong + "," + el.soLuong);
                 }
+                txtThanhTien.Text = "0vnđ";
                 txtGhiChu.Text = null;
                 ListViewOrder.Items.Clear();
                 ThemHoaDonThanhCong themHoaDonThanhCong = new ThemHoaDonThanhCong();
