@@ -24,6 +24,23 @@ namespace DoAn_QuanLyQuanCafe.DataTier
                         }).ToList();
             }
         }
+
+        public List<HoaDonDTO> LocHoaDon(int year, int month, int day)
+        {
+            using (var dbcontext = new QuanCafeModel())
+            {
+                return (from hd in dbcontext.HoaDons
+                        where hd.ngayLap.Year == year && hd.ngayLap.Month == month && hd.ngayLap.Day == day
+                        select new HoaDonDTO()
+                        {
+                            MaHoaDon = hd.maHoaDon,
+                            NgayMua = hd.ngayLap,
+                            TongTien = hd.tongTien,
+                            GhiChu = hd.ghiChu
+                        }).ToList();
+            }
+        }
+
         public int NhapHoaDon(string ghiChu, int tongTien)
         {
             using (var dbcontext = new QuanCafeModel())

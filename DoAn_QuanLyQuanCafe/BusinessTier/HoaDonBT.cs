@@ -20,5 +20,9 @@ namespace DoAn_QuanLyQuanCafe.BusinessTier
         {
             return hoaDonDT.LayDanhSachTatCaHoaDon();
         }
+        internal List<HoaDonDTO> LocHoaDon(int y, int m, int d)
+        {
+            return hoaDonDT.LocHoaDon(y, m, d);
+        }
     }
 }
