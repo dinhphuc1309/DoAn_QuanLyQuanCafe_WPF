@@ -104,6 +104,7 @@
     <Compile Include="DataTier\HoaDonDT.cs" />
     <Compile Include="DataTier\TaiKhoanDT.cs" />
     <Compile Include="DataTier\ThucUongDT.cs" />
+    <Compile Include="DTO\BillOrderDTO.cs" />
     <Compile Include="DTO\ChiTietHoaDonDTO.cs" />
     <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\ThucUongDTO.cs" />

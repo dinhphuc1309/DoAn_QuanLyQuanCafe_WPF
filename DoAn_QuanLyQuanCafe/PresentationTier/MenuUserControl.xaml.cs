@@ -27,15 +27,9 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
 
     public partial class MenuUserControl : UserControl
     {
-
         private HoaDonDT hoaDonDT;
         private ThucUongBT thucUongBT;
         private ChiTietHoaDonDT chiTietHoaDonDT;
-        class HoaDon_
-        {
-            public ThucUong tu { get; set; }
-            public int soLuong { get; set; }
-        }
 
         public MenuUserControl()
         {
@@ -72,7 +66,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         private int TinhTien()
         {
             int TongTien = 0;
-            foreach (HoaDon_ el in ListViewOrder.Items)
+            foreach (BillOrderDTO el in ListViewOrder.Items)
                 TongTien += (int)el.tu.price * el.soLuong;
             string tongTien = TongTien == 0 ? "0" : TongTien.ToString() + ".000";
             txtThanhTien.Text = tongTien + "vnđ";
@@ -89,7 +83,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             //lấy dữ liệu của đối tượng thức uống theo mã thức uống
             ThucUong asd = thucUongBT.LayThucUong(maTU);
 
-            foreach (HoaDon_ el in ListViewOrder.Items)
+            foreach (BillOrderDTO el in ListViewOrder.Items)
             {
 
                 if (el.tu.maThucUong == asd.maThucUong)
@@ -100,7 +94,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
                     return;
                 }
             }
-            ListViewOrder.Items.Add(new HoaDon_ { tu = asd, soLuong = 1 });
+            ListViewOrder.Items.Add(new BillOrderDTO { tu = asd, soLuong = 1 });
             TinhTien();
         }
 
@@ -110,7 +104,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             if (tongtien > 0)
             {  
                 int maHoaDon = hoaDonDT.NhapHoaDon(txtGhiChu.Text, tongtien);
-                foreach (HoaDon_ el in ListViewOrder.Items)
+                foreach (BillOrderDTO el in ListViewOrder.Items)
                 {
                     chiTietHoaDonDT.NhapCTHoaDon(maHoaDon, el.tu.maThucUong, el.soLuong);
                     //MessageBox.Show(el.tu.maThucUong + "," + el.soLuong);
@@ -133,7 +127,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         {
             Button btn = (Button)sender;
             int ma = (int)btn.Tag;
-            foreach (HoaDon_ el in ListViewOrder.Items)
+            foreach (BillOrderDTO el in ListViewOrder.Items)
             {
                 if (el.tu.maThucUong == ma && el.soLuong > 0)
                 {
@@ -150,7 +144,7 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         {
             Button btn = (Button)sender;
             int ma = (int)btn.Tag;
-            foreach (HoaDon_ el in ListViewOrder.Items)
+            foreach (BillOrderDTO el in ListViewOrder.Items)
             {
                 if (el.tu.maThucUong == ma && el.soLuong > 0)
                 {

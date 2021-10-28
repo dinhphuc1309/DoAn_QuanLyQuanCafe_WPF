@@ -39,9 +39,9 @@
                     <DatePicker 
                         VerticalAlignment="Bottom"      
                         SelectedDateChanged="LocaleDatePicker_SelectedDateChanged"
-                        Name="LocaleDatePicker"
+                        Name="dtpChonNgayHienHoaDon"
                         Width="120"
-                        materialDesign:HintAssist.Hint="Locale Date" />
+                        materialDesign:HintAssist.Hint="mm/dd/yyyy" />
                 </StackPanel>
 
                 <ListView Grid.Row="1" x:Name="listViewHoaDon" SelectionChanged="listViewHoaDon_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Hidden" >
