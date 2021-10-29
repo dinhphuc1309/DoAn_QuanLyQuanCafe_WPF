@@ -21,7 +21,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Bottom" Margin="20 0 248 0" FontFamily="Google Sans Medium" FontSize="25" Text="Hóa đơn"/>
+                    <TextBlock VerticalAlignment="Bottom" Margin="20 0 233 0" FontFamily="Google Sans Medium" FontSize="25" Text="Hóa đơn"/>
                     <Button 
                         Click="btnExcelExport_Click"
                         x:Name="btnExcelExport"
@@ -29,11 +29,11 @@
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         VerticalAlignment="Bottom"
                         Background="#0A785F"
-                        FontSize="8"
+                        FontSize="10"
                         Content="Excel Export"
                         FontFamily="Google Sans Medium"
                         Height="24"
-                        Width="75"
+                        Width="90"
                         materialDesign:ButtonAssist.CornerRadius="15" >
                     </Button>
                     <DatePicker 

@@ -98,6 +98,7 @@
     <Compile Include="DataContext\ChiTietHoaDon.cs" />
     <Compile Include="DataContext\HoaDon.cs" />
     <Compile Include="DataContext\QuanCafeModel.cs" />
+    <Compile Include="DataContext\sysdiagram.cs" />
     <Compile Include="DataContext\TaiKhoan.cs" />
     <Compile Include="DataContext\ThucUong.cs" />
     <Compile Include="DataTier\ChiTietHoaDonDT.cs" />

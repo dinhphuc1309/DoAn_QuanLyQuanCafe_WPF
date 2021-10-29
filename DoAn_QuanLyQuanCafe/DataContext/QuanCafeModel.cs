@@ -14,6 +14,7 @@ namespace DoAn_QuanLyQuanCafe.DataContext
 
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThucUong> ThucUongs { get; set; }
 
