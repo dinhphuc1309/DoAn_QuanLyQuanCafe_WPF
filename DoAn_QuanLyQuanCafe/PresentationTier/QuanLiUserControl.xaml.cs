@@ -144,7 +144,8 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
             }
             else
             {
-                MessageBox.Show("Lỗi: " + error);
+                ErrorXoaThucUong errorXoaThucUong = new ErrorXoaThucUong();
+                errorXoaThucUong.ShowDialog();
                 return;
             }
         }

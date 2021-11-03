@@ -126,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PresentationTier\ErrorXoaThucUong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PresentationTier\GiaNull.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,6 +188,9 @@
     </Compile>
     <Compile Include="PresentationTier\ErrorSaiTKMK.xaml.cs">
       <DependentUpon>ErrorSaiTKMK.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationTier\ErrorXoaThucUong.xaml.cs">
+      <DependentUpon>ErrorXoaThucUong.xaml</DependentUpon>
     </Compile>
     <Compile Include="PresentationTier\GiaNull.xaml.cs">
       <DependentUpon>GiaNull.xaml</DependentUpon>
