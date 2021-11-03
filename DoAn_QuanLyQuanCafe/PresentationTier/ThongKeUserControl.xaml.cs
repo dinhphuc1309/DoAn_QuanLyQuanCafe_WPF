@@ -67,7 +67,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
         private void LocaleDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime a = (DateTime)dtpChonNgayHienHoaDon.SelectedDate;
-
             TaiDanhSachHoaDonLenManHinh(a.Year, a.Month, a.Day);
         }
 

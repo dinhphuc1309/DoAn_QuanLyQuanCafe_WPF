@@ -75,7 +75,6 @@ namespace DoAn_QuanLyQuanCafe.PresentationTier
 
         private void btnThemVaoHoaDon_Click(object sender, RoutedEventArgs e)
         {
-            Dictionary<int, double> danhSachVatPham = new Dictionary<int, double>();
 
             //lấy mã thức uống của thẻ được chọn
             Button a = (Button)sender;
